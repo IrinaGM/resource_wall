@@ -16,7 +16,7 @@ INSERT INTO resources (id, url, title, description, user_id, topic_id)
 VALUES (5, 'https://sass-lang.com/guide', 'SASS Guide', 'SASS Basics buide and how to start using it.', 3, 5);
 
 INSERT INTO resources (id, url, title, description, user_id, topic_id)
-VALUES (5, 'https://www.codecademy.com/learn/react-101', 'React 101', 'Build powerful interactive applications with one of the most popular JavaScript libraries.', 4, 6);
+VALUES (6, 'https://www.codecademy.com/learn/react-101', 'React 101', 'Build powerful interactive applications with one of the most popular JavaScript libraries.', 4, 6);
 
 
 

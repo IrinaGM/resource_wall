@@ -15,4 +15,4 @@ INSERT INTO ratings (id, rate, isLike, user_id, resource_id)
 VALUES (5, 5, true, 4, 5);
 
 INSERT INTO ratings (id, rate, isLike, user_id, resource_id)
-VALUES (5, 5, true, 3, 6);
+VALUES (6, 5, true, 3, 6);
