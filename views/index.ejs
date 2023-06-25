@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -41,11 +41,6 @@
     <section id="section-container">
       <item>
         <img src="/"/>
-        <span>Resource span A</span>
-        <topic>Javascript</topic>
-      </item>
-      <item>
-        <img src="/"/>
         <span>Resource span B</span>
         <topic>Javascript</topic>
       </item>
@@ -88,6 +83,11 @@
         <img src="/"/>
         <span>Resource span E</span>
         <topic>CSS</topic>
+      </item>
+      <item>
+        <img alt="< %= itemImageAlt %>" src="< %= itemImageUrl %>"/>
+        <span>< %= itemTitle %></span>
+        <topic>< %= itemTopic %></topic>
       </item>
     </section>
   </main>

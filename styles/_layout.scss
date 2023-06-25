@@ -1,50 +1,14 @@
 /* CSS Structure */
 
-@use 'main';
-
 body,
 html {
   margin: 0;
-}
-
-#top-menu-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-}
-
-#nav-logo {
-  width: 200px;
-}
-
-#nav-main {
-  flex-grow: 0;
-}
-
-#nav-search {
-  flex-grow: 1;
-}
-
-#nav-user {
-  flex-grow: 0;
 }
 
 #main-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-#side-menu-container {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin: 5px;
-  width: 200px;
-  border: 2px solid black;
-  border-radius: 7px;
 }
 
 #section-container {
