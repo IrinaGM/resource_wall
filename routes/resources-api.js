@@ -97,4 +97,87 @@ router.get('/:id', (req, res) => {
        .json({ error: err.message });
    });
 });
+
+//api to add a new resource
+
+router.post('/', (req, res) => {
+  //const userId = req.session.userId;
+  const userId = 1; // Hardcoding for user 1
+  if (!userId) {
+    return res.send({ error: "error" });
+  }
+  const newResource = req.body;
+  newResource.user_id = userId;
+  resourceQueries.addResource(newResource, userId)
+    .then((resource) => {
+      res.json({resource});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+ });
+
+ //api to update a resource
+
+router.post('/:id', (req, res) => {
+  //const userId = req.session.userId;
+  const userId = 1; // Hardcoding for user 1
+  if (!userId) {
+    return res.send({ error: "error" });
+  }
+  const updatedResource = req.body;
+  resourceQueries.updateResource(updatedResource)
+    .then((resource) => {
+      res.json({resource});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+ });
+
+ //api to add a new rating
+
+router.post('/ratings', (req, res) => {
+  //const userId = req.session.userId;
+  const userId = 1; // Hardcoding for user 1
+  if (!userId) {
+    return res.send({ error: "error" });
+  }
+  const rating = req.body;
+  resourceQueries.addRatings(rating)
+    .then((data) => {
+      res.json({data});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+ });
+
+ //api to add a new comment
+
+router.post('/comments', (req, res) => {
+  //const userId = req.session.userId;
+  const userId = 1; // Hardcoding for user 1
+  if (!userId) {
+    return res.send({ error: "error" });
+  }
+  const comment = req.body;
+  resourceQueries.addComments(comment)
+    .then((data) => {
+      res.json({data});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+ });
+
+
 module.exports = router;
