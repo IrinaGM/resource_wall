@@ -1,6 +1,33 @@
+/* Layout CSS for structure */
+
 @use 'main';
 
 body,
 html {
   margin: 0;
+}
+
+#top-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  height: 60px;
+}
+
+#nav-logo {
+  width: 200px;
+}
+
+#nav-main {
+  flex-grow: 0;
+}
+
+#nav-search {
+  flex-grow: 1;
+}
+
+#nav-user {
+  flex-grow: 0;
 }

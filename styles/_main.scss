@@ -1,18 +1,25 @@
+/* Main CSS Theme */
+
 body {
-  display: flex;
+/*   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; */
+  background-color: #EEE;
+}
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+a, a:active, a:visited {
+  text-decoration: none;
+  color: rgb(93, 93, 93);
+}
+
+a:hover {
+  color: rgb(47, 47, 47);
+}
+
+.nav-link {
+  padding: 10px 15px;
+  border: 2px solid black;
+  border-radius: 7px;
 }
