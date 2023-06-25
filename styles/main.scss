@@ -2,23 +2,29 @@
 @use 'nav';
 @use 'input';
 
+/* Colour Theme
+#f3f3f3 Seasalt
+#E3F2FD Alice Blue
+#DB5461 Indian Red
+#686963 Dim Gray
+#8AA29E Cambridge Blue
+*/
+
 $font-stack: Helvetica, sans-serif;
-$background-color: #EEEEEE;
+$body-bg-color: #FFF;
+$container-bg-color: #FFF;
 $border-size: 2px;
-$border-color: #8bdcff;
-$border-radius: 7px;
-$link-color: #333333;
-$link-color-hover: #888888;
+$border-color: #E3F2FD;
+$border-radius: 10px;
+$link-color: #DB5461;
+$link-color-hover: #686963;
+$button-bg-color: #f3f3f3;
 
 /* CSS Theme */
 
 body {
-/*   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; */
-  background-color: $background-color;
+  font-family: $font-stack;
+  background-color: $body-bg-color;
 }
 
 a, a:active, a:visited {
@@ -30,7 +36,16 @@ a:hover {
   color: $link-color-hover;
 }
 
-#side-menu-container, #section-container, #search-bar input, .nav-link {
+.nav-link {
+  border-radius: $border-radius;
+  background-color: $button-bg-color;
+}
+
+#side-menu-container, #section-container {
+  background-color: $container-bg-color;
+}
+
+#side-menu-container, #section-container, #search-bar input {
   border: $border-size solid $border-color;
   border-radius: $border-radius;
 }
