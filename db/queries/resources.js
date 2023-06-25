@@ -66,11 +66,29 @@ const updateResource= (resource) =>{
 };
 
 const addRatings= (rating) =>{
-  return db.query(`INSERT INTO ratings (user_id, resource_id, rate, isLike)
-  VALUES ($1, $2, $3, $4) RETURNING *`,
-  [rating.user_id, rating.resource_id, rating.rate, rating.isLike])
+  return db.query(`SELECT * FROM ratings WHERE user_id = $1 AND resource_id = $2`, [rating.user_id, rating.resource_id])
     .then(data => {
-      return data.rows[0];
+      if(data.rows && data.rows.length > 0){ //UPDATE rating if already present
+        return db.query(`UPDATE ratings SET rate = $1, isLike = $2 WHERE user_id =  $3 AND resource_id = $4
+         RETURNING *`,
+        [rating.rate, rating.isLike, rating.user_id, rating.resource_id])
+        .then(data => {
+          return data.rows[0];
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+      }else{ //INSERT new rating
+        return db.query(`INSERT INTO ratings (user_id, resource_id, rate, isLike)
+        VALUES ($1, $2, $3, $4) RETURNING *`,
+        [rating.user_id, rating.resource_id, rating.rate, rating.isLike])
+          .then(data => {
+            return data.rows[0];
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
     })
     .catch((err) => {
       console.log(err.message);
