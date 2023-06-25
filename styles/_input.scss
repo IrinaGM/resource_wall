@@ -3,18 +3,18 @@
 #search-bar {
   width: 100%;
   min-width: 500px;
-}
 
-#search-bar input {
-  padding: 10px;
-  width: 400px;
-}
+  input {
+    padding: 10px;
+    width: 400px;
+  }
 
-#search-bar button {
-  position: relative;
-  left: -45px;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 3px;
+  button {
+    position: relative;
+    left: -45px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+  }
 }

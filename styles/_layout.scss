@@ -20,19 +20,19 @@ html {
   gap: 30px;
   padding: 20px;
   margin: 5px;
-}
 
-#section-container item {
-  display: flex;
-  flex-direction: column;
-  border-radius: 7px;
-}
+  item {
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+  }
 
-#section-container img {
-  width: 150px;
-  height: 150px;
-  margin: 0px 0px 10px 0px;
-  border-radius: 7px;
+  img {
+    width: 150px;
+    height: 150px;
+    margin: 0px 0px 10px 0px;
+    border-radius: 7px;
+  }
 }
 
 #footer-container {
