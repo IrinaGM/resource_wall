@@ -36,6 +36,10 @@ a:hover {
   color: $link-color-hover;
 }
 
+button {
+  background: none;
+}
+
 .nav-link {
   border-radius: $border-radius;
   background-color: $button-bg-color;
@@ -50,6 +54,22 @@ a:hover {
   border-radius: $border-radius;
 }
 
-button {
-  background: none;
+#section-container {
+  item {
+    border-radius: $border-radius;
+  }
+
+  img {
+    border-radius: $border-radius;
+  }
+
+  span {
+    font-size: 1.1em;
+  }
+
+  topic {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: $link-color;
+  }
 }
