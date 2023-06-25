@@ -18,14 +18,13 @@
 </head>
 
 <body>
+  <!-- Top Navigation -->
   <% include nav.ejs %>
+
   <main id="main-container">
-    <nav id="side-menu-container">
-      <h4>Topics</h4>
-      <a href="/resources?topic=javascript" class="nav-link">Javascript</a>
-      <a href="/resources?topic=html" class="nav-link">HTML</a>
-      <a href="/resources?topic=css" class="nav-link">CSS</a>
-    </nav>
+    <!-- Side menu for topic selector -->
+    <% include sidemenu.ejs %>
+
     <section id="section-container">
       <!-- Dynamic Content Here -->
       <div id="search-bar">
@@ -101,6 +100,7 @@
       </item>
     </section>
   </main>
+  <!-- Include footer information -->
   <% include footer.ejs %>
 </body>
 
