@@ -2,6 +2,14 @@
 @use 'nav';
 @use 'input';
 
+$font-stack: Helvetica, sans-serif;
+$background-color: #EEEEEE;
+$border-size: 2px;
+$border-color: #8bdcff;
+$border-radius: 7px;
+$link-color: #333333;
+$link-color-hover: #888888;
+
 /* CSS Theme */
 
 body {
@@ -10,21 +18,23 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh; */
-  background-color: #EEE;
+  background-color: $background-color;
 }
 
 a, a:active, a:visited {
   text-decoration: none;
-  color: rgb(93, 93, 93);
+  color: $link-color;
 }
 
 a:hover {
-  color: rgb(47, 47, 47);
+  color: $link-color-hover;
 }
 
-.nav-link {
-  padding: 10px 15px;
-  margin: 2px;
-  border: 2px solid black;
-  border-radius: 7px;
+#side-menu-container, #section-container, #search-bar input, .nav-link {
+  border: $border-size solid $border-color;
+  border-radius: $border-radius;
+}
+
+button {
+  background: none;
 }
