@@ -18,20 +18,7 @@
 </head>
 
 <body>
-  <nav id="top-menu-container">
-    <div id="nav-logo">Logo</div>
-    <div id="nav-main">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/myresource" class="nav-link">My Resource</a>
-    </div>
-
-    <div id="nav-user">
-      <span>User Name</span>
-      <a href="/login" class="nav-link">Login</a>
-      <a href="/signup" class="nav-link">Signup</a>
-    </div>
-
-  </nav>
+  <% include nav.ejs %>
   <main id="main-container">
     <nav id="side-menu-container">
       <h4>Topics</h4>
@@ -114,7 +101,7 @@
       </item>
     </section>
   </main>
-  <footer id="footer-container">2023 Resource Wall - Midterm Project by Irina, Sowmy & Kevin.</footer>
+  <% include footer.ejs %>
 </body>
 
 </html>
