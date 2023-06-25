@@ -20,9 +20,15 @@ const getSpecificResourceByUserId= (resource_id, user_id) =>{
     .then(data => {
       return data.rows;
     });
-
+};
+const getResourceByResourceId= (resource_id) =>{
+  return db.query(`SELECT * FROM users WHERE id = $1;`, [resource_id])
+    .then(data => {
+      return data.rows;
+    });
 };
 module.exports = { getAllResources,
                   getResourcesByUserId,
-                  getSpecificResourceByUserId
+                  getSpecificResourceByUserId,
+                  getResourceByResourceId
                  };

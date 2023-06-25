@@ -45,7 +45,7 @@ router.get('/users/:id', (req, res) => {
 
 router.get('/:id/users/:user_id', (req, res) => {
     // req.session.userId = req.params.id;
-    console.log(req.params);
+  console.log(req.params);
    const userId = req.params.user_id;
    const resource_id = req.params.id;
    if (!userId) {
@@ -61,4 +61,40 @@ router.get('/:id/users/:user_id', (req, res) => {
          .json({ error: err.message });
      });
  });
+
+ //api to get a specific resource for the loggedIn user
+
+router.get('/:id/users/:user_id', (req, res) => {
+  // req.session.userId = req.params.id;
+  console.log(req.params);
+ const userId = req.params.user_id;
+ const resource_id = req.params.id;
+ if (!userId) {
+   return res.send({ error: "Please log in!" });
+ }
+ resourceQueries.getSpecificResourceByUserId(resource_id, userId)
+   .then(resources => {
+     res.json({ resources });
+   })
+   .catch(err => {
+     res
+       .status(500)
+       .json({ error: err.message });
+   });
+});
+
+//api to get a specific resource for the guest
+
+router.get('/:id', (req, res) => {
+ const resource_id = req.params.id; //get resource id passed a parameter in the URL
+ resourceQueries.getResourceByResourceId(resource_id)
+   .then(resources => {
+     res.json({ resources });
+   })
+   .catch(err => {
+     res
+       .status(500)
+       .json({ error: err.message });
+   });
+});
 module.exports = router;
