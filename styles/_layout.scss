@@ -36,6 +36,28 @@ html {
   border-radius: 7px;
 }
 
+#search-bar {
+  width: 100%;
+}
+
+#search-bar input {
+  padding: 10px;
+  margin: 5px;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+#search-bar button {
+  position: relative;
+  left: -45px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+}
+
+
 #section-container img {
   width: 150px;
   height: 150px;

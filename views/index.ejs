@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" type="text/css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -23,8 +24,7 @@
       <a href="/" class="nav-link">Home</a>
       <a href="/" class="nav-link">My Resource</a>
     </div>
-    <div id="nav-search">-Search Bar Here-
-    </div>
+
     <div id="nav-user">
       <a href="/" class="nav-link">Login</a>
       <a href="/" class="nav-link">Signup</a>
@@ -39,6 +39,12 @@
       <a href="/resources?topic=css" class="nav-link">CSS</a>
     </nav>
     <section id="section-container">
+      <div id="search-bar">
+        <form>
+          <input type="text" id="searchInput" name="search" placeholder="Search...">
+          <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+        </form>
+      </div>
       <item>
         <img src="/"/>
         <span>Resource span B</span>
