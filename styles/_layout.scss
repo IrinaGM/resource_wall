@@ -17,7 +17,8 @@ html {
   flex-wrap: wrap;
   flex-grow: 1;
   align-items: flex-start;
-  padding: 10px;
+  gap: 30px;
+  padding: 20px;
   margin: 5px;
   border: 2px solid black;
   border-radius: 7px;
@@ -26,31 +27,7 @@ html {
 #section-container item {
   display: flex;
   flex-direction: column;
-  margin: 10px;
   border-radius: 7px;
-}
-
-#search-bar {
-  width: 100%;
-  min-width: 500px;
-}
-
-#search-bar input {
-  padding: 10px;
-  margin: 5px;
-  width: 400px;
-  border: 2px solid black;
-  border-radius: 7px;
-}
-
-#search-bar button {
-  position: relative;
-  left: -45px;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 3px;
-  background: none;
 }
 
 #section-container img {
