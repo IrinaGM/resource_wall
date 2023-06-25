@@ -48,6 +48,39 @@ html {
 }
 
 #section-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   flex-grow: 1;
-  border: 1px solid red;
+  /* justify-content: space-between; */
+  align-items: flex-start;
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+/* #section-container::after {
+  content: "";
+  flex: auto;
+} */
+
+#section-container item {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 7px;
+}
+
+#section-container img {
+  width: 150px;
+  height: 150px;
+  margin: 0px 0px 10px 0px;
+  border-radius: 7px;
+}
+
+#footer-container {
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
 }
