@@ -5,3 +5,10 @@
   </form>
 </div>
 <!-- item.ejs loads here -->
+<% items.forEach(function(item) { %>
+  <item>
+    <img alt="<%= itemImageAlt %>" src="<%= itemImageUrl %>"/>
+    <span><%= itemTitle %></span>
+    <topic><%= itemTopic %></topic>
+  </item>
+<% }); %>
