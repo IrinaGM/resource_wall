@@ -6,9 +6,11 @@
 </div>
 <!-- item.ejs loads here -->
 <% items.forEach(function(item) { %>
-  <item>
-    <img alt="<%= itemImageAlt %>" src="<%= itemImageUrl %>"/>
-    <span><%= itemTitle %></span>
-    <topic><%= itemTopic %></topic>
-  </item>
+  <a href="<%= item.url %>" target="_blank">
+    <item>
+      <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+      <span><%= item.title %></span>
+      <topic><%= item.topic_id %></topic>
+    </item>
+  </a>
 <% }); %>
