@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Resource Wall</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -11,14 +11,97 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" type="text/css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <!-- Top Navigation -->
+  <% include nav.ejs %>
+
+  <main id="main-container">
+    <!-- Side menu for topic selector -->
+    <% include sidemenu.ejs %>
+
+    <section id="section-container">
+      <!-- Dynamic Content Here -->
+      <div id="search-bar">
+        <form>
+          <input type="text" id="searchInput" name="search" placeholder="Quick search...">
+          <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+        </form>
+      </div>
+      <item>
+        <img src="/images/200x200-JS.png"/>
+        <span>Resource Title B</span>
+        <topic>Javascript</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-HTML.png"/>
+        <span>Resource Title C</span>
+        <topic>HTML</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-HTML.png"/>
+        <span>Resource Title D</span>
+        <topic>HTML</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-CSS.png"/>
+        <span>Resource Title E</span>
+        <topic>CSS</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-JS.png"/>
+        <span>Resource Title A</span>
+        <topic>Javascript</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-JS.png"/>
+        <span>Resource Title B</span>
+        <topic>Javascript</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-HTML.png"/>
+        <span>Resource Title C</span>
+        <topic>HTML</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-HTML.png"/>
+        <span>Resource Title D</span>
+        <topic>HTML</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-CSS.png"/>
+        <span>Resource Title E</span>
+        <topic>CSS</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-JS.png"/>
+        <span>Resource Title B</span>
+        <topic>Javascript</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-HTML.png"/>
+        <span>Resource Title C</span>
+        <topic>HTML</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-HTML.png"/>
+        <span>Resource Title D</span>
+        <topic>HTML</topic>
+      </item>
+      <item>
+        <img src="/images/200x200-CSS.png"/>
+        <span>Resource Title E</span>
+        <topic>CSS</topic>
+      </item>
+    </section>
+  </main>
+  <!-- Include footer information -->
+  <% include footer.ejs %>
 </body>
 
 </html>

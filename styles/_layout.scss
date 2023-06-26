@@ -1,0 +1,40 @@
+/* CSS Global Layout */
+
+body,
+html {
+  margin: 0;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#section-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+  margin: 5px;
+
+  item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    margin: 0px 0px 10px 0px;
+  }
+}
+
+#footer-container {
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+}

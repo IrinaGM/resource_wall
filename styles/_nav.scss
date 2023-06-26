@@ -1,0 +1,39 @@
+/* CSS Navigation Layout */
+
+.nav-link {
+  padding: 10px 15px;
+  margin: 2px;
+}
+
+#top-menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+#nav-logo {
+  flex: 0 0 213px;
+  height: 50px;
+  background-image: url('/images/200x50-LOGO.png');
+  background-size: cover;
+}
+
+#nav-main {
+  flex-grow: 1;
+  padding: 0px 0px 0px 20px;
+}
+
+#nav-user {
+  flex-grow: 0;
+  padding: 0px 20px 0px 0px;
+}
+
+#side-menu-container {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 200px;
+  padding: 10px;
+  margin: 5px;
+}
