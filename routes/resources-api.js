@@ -13,7 +13,8 @@ const resourceQueries = require('../db/queries/resources');
 router.get('/', (req, res) => {
   resourceQueries.getAllResources()
     .then(resources => {
-      res.json({ resources });
+      res.render("index", { items: resources });
+      //res.json({ items: resources });
     })
     .catch(err => {
       res
