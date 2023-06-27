@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 router.get('/myresources', (req, res) => {
   resourceQueries.getResourcesByUserId(req.params.id)
     .then(resources => {
-      res.render("myresources", { resources });
+      res.render("my-resources", { resources });
     })
     .catch(err => {
       res

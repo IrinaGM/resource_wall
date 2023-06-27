@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include partials/header %>
+<body>
+  <!-- Top Navigation -->
+  <% include partials/nav %>
+
+  <main id="main-container">
+
+    <section id="section-container">
+      <h1>Login</h1>
+
+      <form method="POST" action="/login">
+        <div>
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            placeholder="email@address.com"
+            style="width: 300px; margin: 1em"
+          />
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="Password"
+            style="width: 300px; margin: 1em"
+          />
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+  <!-- Include footer information -->
+  <% include partials/footer %>
+</body>
+</html>
