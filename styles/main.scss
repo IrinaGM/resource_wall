@@ -33,16 +33,17 @@ h1, h2, h3, h4, h5 {
   margin: 0;
   padding: 0;
   width: 100%;
-  color: #DB5461;
+  color: $link-color;
 }
 
-a, a:active, a:visited {
+a, a:visited {
   text-decoration: none;
   color: $link-color;
 }
 
-a:hover {
-  color: $link-color-hover;
+a:hover, a:active {
+  background-color: $link-color;
+  color: $body-bg-color;
 }
 
 /* Add Link with Style Button */
@@ -52,6 +53,13 @@ a:hover {
   border: none;
   border-radius: $border-radius;
   background-color: $button-bg-color;
+  text-decoration: none;
+  color: $link-color;
+}
+
+.nav-link:hover, button:hover {
+  background-color: $link-color;
+  color: $body-bg-color;
 }
 
 /* Add Background Color */
@@ -89,4 +97,19 @@ a:hover {
 /* Footer Container */
 #footer-container {
   color: #8AA29E;
+}
+
+/* Custom Style */
+#add-resource {
+  input[type="radio"] + label {
+    background-color: $button-bg-color;
+    border-radius: $border-radius;
+    color: $link-color;
+    cursor: pointer;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: $link-color;
+    color: $body-bg-color;
+  }
 }

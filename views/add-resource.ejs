@@ -10,30 +10,19 @@
     <section id="section-container">
       <h1>Add Resource</h1>
 
-      <form method="POST" action="/add">
+      <form id="add-resource" method="POST" action="/add">
         <h4>Enter your resource details:</h4>
-          <input
-            class="form-control"
-            type="text"
-            name="title"
-            placeholder="Enter resource title..."
-          />
-          <input
-            class="form-control"
-            type="text"
-            name="url"
-            placeholder="Add URL https://"
-          />
-          <input
-            class="form-control"
-            type="text"
-            name="description"
-            placeholder="Add description..."
-          />
-          <button type="button">Cancel</button>
-          <button type="submit">Save</button>
+          <input class="form-control" type="text" name="title" placeholder="Enter resource title..."/>
+          <input class="form-control" type="text" name="url" placeholder="Add URL https://" />
+          <input class="form-control" type="text" name="description" placeholder="Add description..." />
         <h4>Select a topic:</h4>
-
+        <div>
+          <input type="radio" id="topic-01" name="options" value="topic-01"><label for="topic-01">Javascript</label>
+          <input type="radio" id="topic-02" name="options" value="topic-02"><label for="topic-02">HTML</label>
+          <input type="radio" id="topic-03" name="options" value="topic-03"><label for="topic-03">CSS</label>
+        </div>
+        <button type="button" onclick="window.location.href = '/';">Cancel</button>
+        <button type="submit">Save</button>
       </form>
     </section>
 

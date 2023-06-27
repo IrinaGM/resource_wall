@@ -9,10 +9,29 @@ form {
   }
 }
 
+/* Custom Layout for Add Resource */
+#add-resource {
+  input[type="radio"] {
+    display: none; // Hide radio button
+  }
+
+  input[type="radio"] + label {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px 0px;
+  }
+
+}
+
+
 /* Custom Layout for Search Bar */
 #search-bar {
   width: 100%;
   min-width: 500px;
+
+  form {
+    display: block;
+  }
 
   input {
     padding: 10px;
