@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require("cookie-session");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -26,16 +27,29 @@ app.use(
 );
 app.use(express.static('public'));
 
+// middleware for signing cookies
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["197nk99tbljihn9"],
+  })
+);
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const resourcesApiRoutes = require('./routes/resources-api');
+const loginRoutes = require('./routes/login');
+const logoutRoutes = require('./routes/logout');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/', resourcesApiRoutes);
 app.use('/myresources', resourcesApiRoutes);
+app.use('/login',loginRoutes);
+app.use('/logout',logoutRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
