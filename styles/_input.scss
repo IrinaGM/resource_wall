@@ -7,6 +7,14 @@ form {
     padding: 10px;
     margin: 10px 0px;
   }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px 0px;
+    border: none;
+  }
 }
 
 /* Custom Layout for Add Resource */
@@ -22,7 +30,6 @@ form {
   }
 
 }
-
 
 /* Custom Layout for Search Bar */
 #search-bar {
