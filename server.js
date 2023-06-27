@@ -17,7 +17,6 @@ app.set('view engine', 'ejs');
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
-//app.use(express.json());
 app.use(
   '/styles',
   sassMiddleware({
@@ -38,25 +37,14 @@ app.use(
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-// const userApiRoutes = require('./routes/users-api');
+const userApiRoutes = require('./routes/users-api');
 const resourcesApiRoutes = require('./routes/resources-api');
-const topicsApiRoutes = require('./routes/topics-api');
-const usersRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/resources', resourcesApiRoutes);
-app.use('/api/topics', topicsApiRoutes);
-app.use('/users', usersRoutes);
-// Note: mount other resources here, using the same pattern above
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
 app.use('/', resourcesApiRoutes);
 app.use('/myresources', resourcesApiRoutes);
 app.use('/login',loginRoutes);
