@@ -21,9 +21,35 @@ router.get("/", (req, res) => {
     });
 });
 
-//api to get resources only for the loggedIn user
+// Landing Page
+router.get('/', (req, res) => {
+  resourceQueries.getAllResources()
+    .then(resources => {
+      res.render("index", { resources });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
-router.get("/users/:id", (req, res) => {
+// My Resources Page (loggedIn)
+router.get('/myresources', (req, res) => {
+  resourceQueries.getResourcesByUserId(req.params.id)
+    .then(resources => {
+      res.render("myresources", { resources });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+//api to get resources only for the loggedIn user
+router.get('/users/:id', (req, res) => {
+ // req.session.userId = req.params.id;
   const userId = req.params.id;
   if (!userId) {
     return res.send({ error: "Please log in!" });
