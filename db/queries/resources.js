@@ -13,6 +13,7 @@ const getAllResources = () => {
       console.log(err.message);
     });
 };
+
 const getResourcesByUserId = (user_id) => {
   // define query
   const queryString = `SELECT * FROM resources WHERE user_id = $1;`;
@@ -29,6 +30,7 @@ const getResourcesByUserId = (user_id) => {
       console.log(err.message);
     });
 };
+
 const getSpecificResourceByUserId= (resource_id, user_id) =>{
     // define query
     const queryString = `SELECT * FROM resources WHERE id = $1 AND user_id = $2;`;
