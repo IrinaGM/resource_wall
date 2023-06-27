@@ -21,22 +21,9 @@ router.get('/', (req, res) => {
 
 // My Resources Page (loggedIn)
 router.get('/myresources', (req, res) => {
-  resourceQueries.getResourcesByUserId(req.params.id)
+  resourceQueries.getResourcesByUserId(req.session.user_id)
     .then(resources => {
       res.render("my-resources", { resources });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
-// My Resources Page (loggedIn)
-router.get('/addresource', (req, res) => {
-  resourceQueries.getResourcesByUserId(req.params.id)
-    .then(resources => {
-      res.render("add-resource", { resources });
     })
     .catch(err => {
       res
