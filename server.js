@@ -25,6 +25,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use('/content', express.static('views')) // Add to serve container .ejs files in app.js
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -50,7 +51,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/myresources', (req, res) => {
-  res.render('myresources');
+  res.render('index');
 });
 
 app.listen(PORT, () => {
