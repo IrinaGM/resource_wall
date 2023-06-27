@@ -58,7 +58,7 @@ const addResource= (resource, user_id) =>{
   return db.query(`INSERT INTO resources (url, title, description, user_id, topic_id)
   VALUES ($1, $2, $3, $4, $5) RETURNING *`,
   [resource.url, resource.title, resource.description, user_id, resource.topic_id])
-    .then(data => {
+    .then(data => {      
       return data.rows[0];
     })
     .catch((err) => {

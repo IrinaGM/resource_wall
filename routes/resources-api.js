@@ -77,7 +77,7 @@ router.post("/users/:id", (req, res) => {
   if (!userId) {
     return res.send({ error: "Please log in!" });
   }
-  const newResource = req.body;
+  const newResource = req.body; 
   newResource.user_id = userId;
   resourceQueries
     .addResource(newResource, userId)
