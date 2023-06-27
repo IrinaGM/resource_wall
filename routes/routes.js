@@ -32,4 +32,17 @@ router.get('/myresources', (req, res) => {
     });
 });
 
+// My Resources Page (loggedIn)
+router.get('/addresource', (req, res) => {
+  resourceQueries.getResourcesByUserId(req.params.id)
+    .then(resources => {
+      res.render("add-resource", { resources });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 module.exports = router;

@@ -1,5 +1,15 @@
 /* CSS Input Layout */
+form {
+  display: flex;
+  flex-direction: column;
 
+  input {
+    padding: 10px;
+    margin: 10px 0px;
+  }
+}
+
+/* Custom Layout for Search Bar */
 #search-bar {
   width: 100%;
   min-width: 500px;
@@ -11,10 +21,11 @@
 
   button {
     position: relative;
-    left: -45px;
+    left: -50px;
     width: 30px;
     height: 30px;
     border: none;
     border-radius: 3px;
+    background: none;
   }
 }

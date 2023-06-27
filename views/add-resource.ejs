@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include partials/header %>
+<body>
+  <!-- Top Navigation -->
+  <% include partials/nav %>
+
+  <main id="main-container">
+
+    <section id="section-container">
+      <h1>Add Resource</h1>
+
+      <form method="POST" action="/add">
+        <h4>Enter your resource details:</h4>
+          <input
+            class="form-control"
+            type="text"
+            name="title"
+            placeholder="Enter resource title..."
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="url"
+            placeholder="Add URL https://"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="description"
+            placeholder="Add description..."
+          />
+          <button type="button">Cancel</button>
+          <button type="submit">Save</button>
+        <h4>Select a topic:</h4>
+
+      </form>
+    </section>
+
+  </main>
+  <!-- Include footer information -->
+  <% include partials/footer %>
+</body>
+</html>

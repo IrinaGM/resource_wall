@@ -20,11 +20,20 @@ $link-color: #DB5461;
 $link-color-hover: #686963;
 $button-bg-color: #f3f3f3;
 
-/* CSS Theme */
-
+/* CSS Theme
+ * Universal Styles
+ */
 body {
   font-family: $font-stack;
   background-color: $body-bg-color;
+}
+
+h1, h2, h3, h4, h5 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #DB5461;
 }
 
 a, a:active, a:visited {
@@ -36,24 +45,27 @@ a:hover {
   color: $link-color-hover;
 }
 
-button {
-  background: none;
-}
-
-.nav-link {
+/* Add Link with Style Button */
+.nav-link, button {
+  padding: 10px 15px;
+  margin: 2px;
+  border: none;
   border-radius: $border-radius;
   background-color: $button-bg-color;
 }
 
+/* Add Background Color */
 #side-menu-container, #section-container {
   background-color: $container-bg-color;
 }
 
-#side-menu-container, #section-container, #search-bar input {
+/* Add Border Style */
+#side-menu-container, #section-container, input {
   border: $border-size solid $border-color;
   border-radius: $border-radius;
 }
 
+/* Main Container */
 #section-container {
   item {
     border-radius: $border-radius;
@@ -72,4 +84,9 @@ button {
     font-weight: bold;
     color: $link-color;
   }
+}
+
+/* Footer Container */
+#footer-container {
+  color: #8AA29E;
 }
