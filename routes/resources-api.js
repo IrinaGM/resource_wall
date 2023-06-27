@@ -10,7 +10,7 @@ const router  = express.Router();
 const resourceQueries = require('../db/queries/resources');
 
 //api to get all resources
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
   resourceQueries.getAllResources()
     .then(resources => {
       res.json({ resources });
@@ -22,33 +22,7 @@ router.get('/api', (req, res) => {
     });
 });
 
-// Landing Page
-router.get('/', (req, res) => {
-  resourceQueries.getAllResources()
-    .then(resources => {
-      res.render("index", { resources });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 //api to get resources only for the loggedIn user
-
-// My Resources Page (loggedIn)
-router.get('/myresources', (req, res) => {
-  resourceQueries.getResourcesByUserId(req.params.id)
-    .then(resources => {
-      res.render("myresources", { resources });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
 router.get('/users/:id', (req, res) => {
  // req.session.userId = req.params.id;
