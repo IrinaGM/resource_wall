@@ -40,24 +40,6 @@ const getResourcesByUserId = (user_id) => {
     });
 };
 
-const getSpecificResourceByUserId= (resource_id, user_id) =>{
-    // define query
-    const queryString = `SELECT * FROM resources WHERE id = $1 AND user_id = $2;`;
-
-    //define values
-    const values = [resource_id, user_id];
-
-  // query the db
-  return db.query(queryString, values)
-    .then(data => {
-      return data.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-
-};
-
 // USER-STORY-01: POST Data to Database
 const postResourceByUserId = (title, url, description, options, user_id) => {
   // Query
@@ -72,28 +54,6 @@ const postResourceByUserId = (title, url, description, options, user_id) => {
   return db.query(queryString, values)
     .then(data => {
       return data.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-//Get resource by resouce id
-const getResourceByResourceId= (resource_id) =>{
-  return db.query(`SELECT * FROM resources WHERE id = $1;`, [resource_id])
-    .then(data => {
-      return data.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-//Add resource
-const addResource= (resource, user_id) =>{
-  return db.query(`INSERT INTO resources (url, title, description, user_id, topic_id)
-  VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-  [resource.url, resource.title, resource.description, user_id, resource.topic_id])
-    .then(data => {      
-      return data.rows[0];
     })
     .catch((err) => {
       console.log(err.message);
@@ -159,10 +119,7 @@ module.exports =
   {
     getAllResources,
     getResourcesByUserId,
-    getSpecificResourceByUserId,
     postResourceByUserId,
-    getResourceByResourceId,
-    addResource,
     updateResource,
     addRatings,
     addComments

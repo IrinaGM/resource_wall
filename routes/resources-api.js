@@ -25,50 +25,6 @@ router.get('/', (req, res) => {
     });
 });
 
-//api to get resources created by the loggedIn user
-router.get('/user', (req, res) => { 
-  const userId = req.session.user_id;
-  if (!userId) {
-    return res.send({ error: "Please log in!" });
-  }
-  resourceQueries.getResourcesByUserId(userId)
-    .then(resources => {
-      res.json({ resources });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
-//api to get a specific resource 
-router.get('/:id', (req, res) => {   
-   const userId = req.session.user_id;
-   const resource_id = req.params.id;
-   if (!userId) { //For guest
-      resourceQueries
-      .getResourceByResourceId(resource_id)
-      .then((resources) => {
-        res.json({ resources });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-    }
-    else{ //For logged In user
-      resourceQueries.getSpecificResourceByUserId(resource_id, userId)
-      .then(resources => {
-        res.json({ resources });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-    }
- });
-
 /*
  * All the POST goes here
  */
@@ -85,25 +41,6 @@ router.post('/add', (req, res) => {
       res.status(400).send(err);
     })
     res.redirect("/my-resources");
-});
-
-//api to add a new resource
-
-router.post("/new", (req, res) => {
-  const userId = req.session.user_id;
-  if (!userId) {
-    return res.send({ error: "Please log in!" });
-  }
-  const newResource = req.body; 
-  newResource.user_id = userId;
-  resourceQueries
-    .addResource(newResource, userId)
-    .then((resource) => {
-      res.json({ resource });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
 });
 
 //api to update a resource
