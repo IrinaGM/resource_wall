@@ -134,10 +134,10 @@ const addComments= (comment) =>{
 module.exports =
   {
     getAllResources,
+    getResourcebyId,
     getResourcesByUserId,
     postResourceByUserId,
     updateResource,
     addRatings,
-    addComments,
-    getResourcebyId
+    addComments
   };
