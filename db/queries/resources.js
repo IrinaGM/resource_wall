@@ -49,9 +49,32 @@ const getSpecificResourceByUserId= (resource_id, user_id) =>{
 
 };
 
+/* POST Data to Database
+ * Edit by Kevin
+ */
+const postResourceByUserId = (title, url, description, options, user_id) => {
+  // Query
+  const queryString = `
+  INSERT INTO resources (url, title, description, user_id, topic_id)
+  VALUES ($1, $2, $3, $4, $5);
+  `;
+
+  // Variables
+  const values = [url, title, description, user_id, options];
+
+  return db.query(queryString, values)
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 module.exports =
   {
     getAllResources,
     getResourcesByUserId,
-    getSpecificResourceByUserId
+    getSpecificResourceByUserId,
+    postResourceByUserId
   };

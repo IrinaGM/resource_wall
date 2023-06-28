@@ -10,7 +10,7 @@
     <section id="section-container">
       <h1>Add Resource</h1>
 
-      <form id="add-resource" method="POST" action="/add">
+      <form id="add-resource" method="POST" action="/api/resources/add">
         <h4>Enter your resource details:</h4>
         <fieldset>
           <label for="title">Title:</label>
@@ -26,9 +26,9 @@
         </fieldset>
         <div>
           <h4>Select a topic:</h4>
-          <input type="radio" id="topic-01" name="options" value="topic-01"><label for="topic-01">Javascript</label>
-          <input type="radio" id="topic-02" name="options" value="topic-02"><label for="topic-02">HTML</label>
-          <input type="radio" id="topic-03" name="options" value="topic-03"><label for="topic-03">CSS</label>
+          <input type="radio" id="topic-01" name="options" value="1"><label for="topic-01">Javascript</label>
+          <input type="radio" id="topic-02" name="options" value="2"><label for="topic-02">HTML</label>
+          <input type="radio" id="topic-03" name="options" value="3"><label for="topic-03">CSS</label>
         </div>
         <button type="button" onclick="window.location.href = '/';">Cancel</button>
         <button type="submit">Save</button>
