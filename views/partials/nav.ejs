@@ -9,8 +9,8 @@
   </div>
 
   <div id="nav-user">
-    <span> User Name </span>
-    <% if (typeof user_id !== 'undefined') { %>
+    <% if (user !== null) { %>
+      <span> Hello <%= (user.name) %> </span>
       <a href="/logout" class="nav-link">Logout</a>
     <% } else { %>
       <a href="/login" class="nav-link">Login</a>

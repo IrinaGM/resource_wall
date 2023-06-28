@@ -16,17 +16,7 @@ router.get('/', (req, res) => {
       return;
     }
 
-    // find user's data based on the cookie info in DB
-    userQueries.getUserWithId(req.session.user_id)
-    .then(
-      (userData) => {
-        const templateVars = { user: userData };
-        res.render("login", templateVars);
-      }
-    )
-    .catch((err) => {
-      console.log(err.message);
-    });
+    res.render("login", { user: null });
 });
 
 
@@ -44,14 +34,10 @@ router.post('/',(req, res) => {
   // check if user exists in DB, if not userData will be null
   userQueries.getUserWithEmail(req.body.email)
     .then((userData) => {
-      console.log(userData);
-
       if (!userData) {
         res.status(403).send("Email cannot be found");
         return;
       }
-
-      console.log(`password`, password);
 
       // if user exists but the passwords don't match, return error
       if (password !== userData.password) {
