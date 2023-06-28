@@ -42,6 +42,7 @@ const userApiRoutes = require('./routes/users-api');
 const resourcesApiRoutes = require('./routes/resources-api');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
+const topicsApiRoutes = require('./routes/topics-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -51,6 +52,7 @@ app.use('/api/resources', resourcesApiRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
+app.use('/api/topics', topicsApiRoutes);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
