@@ -1,5 +1,13 @@
 const db = require('../connection');
 
+// Check Input URL to includes HTTPS://
+const checkHttp = (url) => {
+  if (!url.startsWith("https://") && !url.startsWith("http://")) {
+    return "https://" + url;
+  }
+  return url;
+};
+
 const getAllResources = () => {
   // define query
   const queryString = 'SELECT * FROM resources;';
@@ -59,7 +67,7 @@ const postResourceByUserId = (title, url, description, options, user_id) => {
   `;
 
   // Variables
-  const values = [url, title, description, user_id, options];
+  const values = [checkHttp(url), title, description, user_id, options];
 
   return db.query(queryString, values)
     .then(data => {
