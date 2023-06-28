@@ -22,6 +22,22 @@ const getAllResources = () => {
     });
 };
 
+// USER-STORY-04: Get Single Resource by resource ID
+const getResourcebyId = (id) => {
+  // Query
+  const queryString = `SELECT * FROM resources WHERE id = $1;`;
+  const values = [id];
+
+  // Database
+  return db.query(queryString, values)
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 // USER-STORY-05: Get Resources by USER_ID
 const getResourcesByUserId = (user_id) => {
   // define query
@@ -83,5 +99,6 @@ module.exports =
     getAllResources,
     getResourcesByUserId,
     getSpecificResourceByUserId,
-    postResourceByUserId
+    postResourceByUserId,
+    getResourcebyId
   };
