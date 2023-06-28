@@ -9,6 +9,9 @@ const express = require('express');
 const router  = express.Router();
 const resourceQueries = require('../db/queries/resources');
 
+/*
+ * All the GET goes here
+ */
 //api to get all resources
 router.get('/', (req, res) => {
   resourceQueries.getAllResources()
@@ -20,21 +23,6 @@ router.get('/', (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
-});
-
-// Add new resource, edit by Kevin
-router.post('/add', (req, res) => {
-  const { title, url, description, options } = req.body;
-  const user_id = req.session.user_id;
-
-  resourceQueries.postResourceByUserId(title, url, description, options, user_id)
-    .then(resources => {
-      console.log(resources)
-    })
-    .catch(err => {
-      res.status(400).send(err);
-    })
-    res.redirect("/");
 });
 
 //api to get resources only for the loggedIn user
@@ -74,4 +62,23 @@ router.get('/:id/users/:user_id', (req, res) => {
          .json({ error: err.message });
      });
  });
+
+/*
+ * All the POST goes here
+ */
+// USER-STORY-01: Add New Resource
+router.post('/add', (req, res) => {
+  const { title, url, description, options } = req.body;
+  const user_id = req.session.user_id;
+
+  resourceQueries.postResourceByUserId(title, url, description, options, user_id)
+    .then(resources => {
+      console.log(resources)
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
+    res.redirect("/my-resources");
+});
+
 module.exports = router;

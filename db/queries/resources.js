@@ -14,6 +14,7 @@ const getAllResources = () => {
     });
 };
 
+// USER-STORY-05: Get Resources by USER_ID
 const getResourcesByUserId = (user_id) => {
   // define query
   const queryString = `SELECT * FROM resources WHERE user_id = $1;`;
@@ -49,9 +50,7 @@ const getSpecificResourceByUserId= (resource_id, user_id) =>{
 
 };
 
-/* POST Data to Database
- * Edit by Kevin
- */
+// USER-STORY-01: POST Data to Database
 const postResourceByUserId = (title, url, description, options, user_id) => {
   // Query
   const queryString = `

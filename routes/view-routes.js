@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// My Resources Page (loggedIn)
+// USER-STORY-05: My Resources Page (loggedIn)
 router.get('/my-resources', (req, res) => {
   resourceQueries.getResourcesByUserId(req.session.user_id)
     .then(resources => {
@@ -32,7 +32,7 @@ router.get('/my-resources', (req, res) => {
     });
 });
 
-// Add Resource Page (loggedIn)
+// USER-STORY-01: Add Resource Page (loggedIn)
 router.get('/new-resource', (req, res) => {
   resourceQueries.getResourcesByUserId(req.params.id)
     .then(resources => {
