@@ -6,63 +6,60 @@
   <% include partials/nav %>
 
   <main id="main-container">
-    <!-- Side menu for topic selector -->
-    <% include partials/sidemenu %>
-
     <section id="section-container">
+      <item id="resource-container">
+        <button class="fa-solid fa-xmark" id="closeBtn" onclick="goBack()"></button>
+        <aside>
+          <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+          <a class="nav-link" href="<%= item.url %>" target="_blank">Visit Site</a>
+          <div>
+            <div class="nav-link" id="rating">
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <button class="fa-regular fa-heart" id="like"></button>
+          </div>
+        </aside>
 
-          <item id="resource-container">
-            <aside>
-              <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
-              <a class="nav-link" href="<%= item.url %>" target="_blank">Visit Site</a>
-              <div>
-                <div class="nav-link" id="rating">
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                </div>
-                <button class="fa-regular fa-heart" id="like"></button>
-              </div>
-            </aside>
+        <article>
+          <section id="resource-title">
+            <h1><%= item.title %></h1>
+            <h3><%= item.topic_name %></h3>
+          </section>
 
-            <article>
-              <section id="resource-title">
-                <h1><%= item.title %></h1>
-                <h2><%= item.topic_id %></h2>
-              </section>
+          <section id="resource-stat">
+            <div>Rating: <%= item.avg_rating %> / 5</div>
+            <div>Liked: <%= item.total_like %></div>
+          </section>
 
-              <section id="resource-stat">
-                <div>Rating: / 5</div>
-                <div>Liked: </div>
-              </section>
+          <section id="resource-desc">
+            <h3>Description:</h3>
+            <span><%= item.description %></span>
+          </section>
 
-              <section id="resource-desc">
-                <h3>Description:</h3>
-                <span><%= item.description %></span>
-              </section>
+          <section id="resource-reviews">
+            <h3>Reviews</h3>
+            <div id="review-container">
+              <h5>Firstname Lastname</h5>
+              <span>Review text here...</span>
+            </div>
+          </section>
 
-              <section id="resource-reviews">
-                <h3>Reviews</h3>
-                <div id="review-container">
-                  <h5>Firstname Lastname</h5>
-                  <span>Review text here...</span>
-                </div>
-              </section>
+          <section id="review-input">
+            <form>
+              <fieldset>
+                <label for="reviewInput"><h3>Add your review:</h3></label>
+                <textarea type="text" id="reviewInput" name="review" placeholder="Add your review..."></textarea>
+              </fieldset>
+              <button type="submit">Submit Review</button>
+            </form>
+          </section>
+        </article>
 
-              <section id="review-input">
-                <form>
-                  <fieldset>
-                    <label for="reviewInput"><h3>Add your review:</h3></label>
-                    <textarea type="text" id="reviewInput" name="review" placeholder="Add your review..."></textarea>
-                  </fieldset>
-                  <button type="submit">Submit Review</button>
-                </form>
-              </section>
-            </article>
-
-          </item>
+      </item>
     </section>
 
   </main>

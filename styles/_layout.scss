@@ -31,6 +31,14 @@ html {
     height: 150px;
     margin: 0px 0px 10px 0px;
   }
+
+  #closeBtn {
+    position: absolute;
+    right: 20px;
+    top: 110px;
+    font-size: 1.5em;
+    padding: 10px 13px;
+  }
 }
 
 #footer-container {
