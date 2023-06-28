@@ -9,8 +9,11 @@ const express = require('express');
 const router  = express.Router();
 const resourceQueries = require('../db/queries/resources');
 
+/*
+ * All the GET goes here
+ */
 //api to get all resources
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
   resourceQueries.getAllResources()
     .then(resources => {
       res.json({ resources });
@@ -22,34 +25,7 @@ router.get('/api', (req, res) => {
     });
 });
 
-// Landing Page
-router.get('/', (req, res) => {
-  resourceQueries.getAllResources()
-    .then(resources => {
-      res.render("index", { resources });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 //api to get resources only for the loggedIn user
-
-// My Resources Page (loggedIn)
-router.get('/myresources', (req, res) => {
-  resourceQueries.getResourcesByUserId(req.params.id)
-    .then(resources => {
-      res.render("myresources", { resources });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 router.get('/users/:id', (req, res) => {
  // req.session.userId = req.params.id;
   const userId = req.params.id;
@@ -68,7 +44,6 @@ router.get('/users/:id', (req, res) => {
 });
 
 //api to get a specific resource for the loggedIn user
-
 router.get('/:id/users/:user_id', (req, res) => {
     // req.session.userId = req.params.id;
     console.log(req.params);
@@ -87,4 +62,23 @@ router.get('/:id/users/:user_id', (req, res) => {
          .json({ error: err.message });
      });
  });
+
+/*
+ * All the POST goes here
+ */
+// USER-STORY-01: Add New Resource
+router.post('/add', (req, res) => {
+  const { title, url, description, options } = req.body;
+  const user_id = req.session.user_id;
+
+  resourceQueries.postResourceByUserId(title, url, description, options, user_id)
+    .then(resources => {
+      console.log(resources)
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    })
+    res.redirect("/my-resources");
+});
+
 module.exports = router;

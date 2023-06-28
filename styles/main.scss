@@ -20,40 +20,60 @@ $link-color: #DB5461;
 $link-color-hover: #686963;
 $button-bg-color: #f3f3f3;
 
-/* CSS Theme */
-
+/* CSS Theme
+ * Universal Styles
+ */
 body {
   font-family: $font-stack;
   background-color: $body-bg-color;
 }
 
-a, a:active, a:visited {
+h1, h2, h3, h4, h5 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: $link-color;
+}
+
+a, a:visited {
   text-decoration: none;
   color: $link-color;
 }
 
-a:hover {
-  color: $link-color-hover;
+a:hover, a:active {
+  background-color: $link-color;
+  color: $body-bg-color;
 }
 
-button {
-  background: none;
-}
-
-.nav-link {
+/* Add Link with Style Button */
+.nav-link, button {
+  padding: 10px 15px;
+  margin: 2px;
+  border: none;
   border-radius: $border-radius;
   background-color: $button-bg-color;
+  text-decoration: none;
+  color: $link-color;
 }
 
+.nav-link:hover, button:hover {
+  background-color: $link-color;
+  color: $body-bg-color;
+}
+
+/* Add Background Color */
 #side-menu-container, #section-container {
   background-color: $container-bg-color;
 }
 
-#side-menu-container, #section-container, #search-bar input {
+/* Add Border Style */
+#side-menu-container, #section-container, input {
   border: $border-size solid $border-color;
   border-radius: $border-radius;
 }
 
+/* Main Container */
 #section-container {
   item {
     border-radius: $border-radius;
@@ -71,5 +91,25 @@ button {
     font-size: 0.9em;
     font-weight: bold;
     color: $link-color;
+  }
+}
+
+/* Footer Container */
+#footer-container {
+  color: #8AA29E;
+}
+
+/* Custom Style */
+#add-resource {
+  input[type="radio"] + label {
+    background-color: $button-bg-color;
+    border-radius: $border-radius;
+    color: $link-color;
+    cursor: pointer;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: $link-color;
+    color: $body-bg-color;
   }
 }

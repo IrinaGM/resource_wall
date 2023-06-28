@@ -13,6 +13,8 @@ const getAllResources = () => {
       console.log(err.message);
     });
 };
+
+// USER-STORY-05: Get Resources by USER_ID
 const getResourcesByUserId = (user_id) => {
   // define query
   const queryString = `SELECT * FROM resources WHERE user_id = $1;`;
@@ -29,6 +31,7 @@ const getResourcesByUserId = (user_id) => {
       console.log(err.message);
     });
 };
+
 const getSpecificResourceByUserId= (resource_id, user_id) =>{
     // define query
     const queryString = `SELECT * FROM resources WHERE id = $1 AND user_id = $2;`;
@@ -47,9 +50,30 @@ const getSpecificResourceByUserId= (resource_id, user_id) =>{
 
 };
 
+// USER-STORY-01: POST Data to Database
+const postResourceByUserId = (title, url, description, options, user_id) => {
+  // Query
+  const queryString = `
+  INSERT INTO resources (url, title, description, user_id, topic_id)
+  VALUES ($1, $2, $3, $4, $5);
+  `;
+
+  // Variables
+  const values = [url, title, description, user_id, options];
+
+  return db.query(queryString, values)
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 module.exports =
   {
     getAllResources,
     getResourcesByUserId,
-    getSpecificResourceByUserId
+    getSpecificResourceByUserId,
+    postResourceByUserId
   };
