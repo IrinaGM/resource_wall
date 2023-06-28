@@ -10,14 +10,53 @@
     <% include partials/sidemenu %>
 
     <section id="section-container">
-      <h1><%= item.title %></h1>
-        <a href="<%= item.url %>" target="_blank">
-          <item>
-            <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
-            <span><%= item.title %></span>
-            <topic><%= item.topic_id %></topic>
+
+          <item id="resource-container">
+            <aside>
+              <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+              <a class="nav-link" href="<%= item.url %>" target="_blank">Visit Site</a>
+              <div>
+                <div class="nav-link" id="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <button class="fa-regular fa-heart" id="like"></button>
+              </div>
+            </aside>
+
+            <article>
+              <section id="resource-title">
+                <h1><%= item.title %></h1>
+                <h2><%= item.topic_id %></h2>
+              </section>
+
+              <section id="resource-stat">
+                <div>Rating: / 5</div>
+                <div>Liked: </div>
+              </section>
+
+              <section id="resource-desc">
+                <h3>Description:</h3>
+                <span><%= item.description %></span>
+              </section>
+
+              <section id="resource-reviews">
+                <h3>Reviews</h3>
+                <div id="review-container">
+                  <h5>Firstname Lastname</h5>
+                  <span>Review text here...</span>
+                </div>
+              </section>
+
+              <section id="review-input">
+                <form>
+                  <fieldset>
+                    <label for="reviewInput"><h3>Add your review:</h3></label>
+                    <textarea type="text" id="reviewInput" name="review" placeholder="Add your review..."></textarea>
+                  </fieldset>
+                  <button type="submit">Submit Review</button>
+                </form>
+              </section>
+            </article>
+
           </item>
-        </a>
     </section>
 
   </main>

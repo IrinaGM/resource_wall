@@ -38,3 +38,83 @@ html {
   margin: 5px;
   text-align: center;
 }
+
+#resource-container {
+  display: flex;
+  flex-direction: row !important;
+
+  aside {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      padding: 15px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: row;
+    }
+
+    #rating {
+      width: 190px;
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    #like {
+      font-size: 1.5em;
+    }
+
+    img {
+      height: 250px;
+      width: 250px;
+    }
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 35px;
+    flex-grow: 1;
+
+    section {
+      padding: 0px 0px 20px 0px;
+    }
+
+    #resource-stat {
+      display: flex;
+      flex-direction: row;
+
+      div {
+        padding: 0px 25px 0px 0px;
+      }
+    }
+
+    #resource-desc {
+      h3 {
+        padding: 10px 0px;
+      }
+    }
+
+    #resource-reviews {
+      h3 {
+        padding: 15px 0px;
+      }
+    }
+
+    #review-input {
+      textarea {
+        height: 100px;
+        width: 100%;
+      }
+
+      button {
+        display: block;
+      }
+    }
+
+  }
+}
