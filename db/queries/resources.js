@@ -25,7 +25,17 @@ const getAllResources = () => {
 // USER-STORY-04: Get Single Resource by resource ID
 const getResourcebyId = (id) => {
   // Query
-  const queryString = `SELECT * FROM resources WHERE id = $1;`;
+  const queryString = `
+  SELECT
+    resources.url, resources.title, resources.description,
+    resources.user_id, topics.name as topic_name,
+    (SELECT round(avg(rate), 2) FROM ratings WHERE resource_id = $1) as avg_rating,
+    (SELECT sum(CASE WHEN ratings.islike THEN 1 ELSE 0 END) FROM ratings WHERE resource_id = $1) as total_like
+  FROM resources
+  JOIN topics ON topics.id = resources.topic_id
+  WHERE resources.id = $1;
+  `;
+
   const values = [id];
 
   // Database
