@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include partials/header %>
+<body>
+  <!-- Top Navigation -->
+  <% include partials/nav %>
+
+  <main id="main-container">
+    <!-- Side menu for topic selector -->
+    <% include partials/sidemenu %>
+
+    <section id="section-container">
+      <h1><%= item.title %></h1>
+        <a href="<%= item.url %>" target="_blank">
+          <item>
+            <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+            <span><%= item.title %></span>
+            <topic><%= item.topic_id %></topic>
+          </item>
+        </a>
+    </section>
+
+  </main>
+  <!-- Include footer information -->
+  <% include partials/footer %>
+</body>
+</html>
