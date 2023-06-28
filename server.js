@@ -37,17 +37,16 @@ app.use(
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const defaultRoutes = require('./routes/view-routes');
+const viewRoutes = require('./routes/view-routes');
 const userApiRoutes = require('./routes/users-api');
 const resourcesApiRoutes = require('./routes/resources-api');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
-const addResource = require('./routes/add-resource');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/', defaultRoutes);
+app.use('/', viewRoutes);
 app.use('/api/resources', resourcesApiRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/login', loginRoutes);
