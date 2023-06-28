@@ -5,12 +5,16 @@
 const express = require('express');
 const router  = express.Router();
 const resourceQueries = require('../db/queries/resources');
+const userQueries = require('../db/queries/users');
 
 // Landing Page
 router.get('/', (req, res) => {
   resourceQueries.getAllResources()
     .then(resources => {
-      res.render("index", { resources, user_id: req.session.user_id });
+      userQueries.getUserWithId(req.session.user_id)
+      .then((userData) => {
+        res.render("index", { resources, user: userData });
+      })
     })
     .catch(err => {
       res
@@ -26,7 +30,10 @@ router.get('/my-resources', (req, res) => {
   }
   resourceQueries.getResourcesByUserId(req.session.user_id)
     .then(resources => {
-      res.render("my-resources", { resources, user_id: req.session.user_id });
+      userQueries.getUserWithId(req.session.user_id)
+      .then((userData) => {
+        res.render("my-resources", { resources, user: userData });
+      })
     })
     .catch(err => {
       res
@@ -42,7 +49,10 @@ router.get('/new-resource', (req, res) => {
   }
   resourceQueries.getResourcesByUserId(req.params.id)
     .then(resources => {
-      res.render("new-resource", { resources, user_id: req.session.user_id });
+      userQueries.getUserWithId(req.session.user_id)
+      .then((userData) => {
+        res.render("new-resource", { resources, user: userData });
+      })
     })
     .catch(err => {
       res
