@@ -56,24 +56,6 @@ const getResourcesByUserId = (user_id) => {
     });
 };
 
-const getSpecificResourceByUserId= (resource_id, user_id) =>{
-    // define query
-    const queryString = `SELECT * FROM resources WHERE id = $1 AND user_id = $2;`;
-
-    //define values
-    const values = [resource_id, user_id];
-
-  // query the db
-  return db.query(queryString, values)
-    .then(data => {
-      return data.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-
-};
-
 // USER-STORY-01: POST Data to Database
 const postResourceByUserId = (title, url, description, options, user_id) => {
   // Query
@@ -93,12 +75,69 @@ const postResourceByUserId = (title, url, description, options, user_id) => {
       console.log(err.message);
     });
 };
+//Update resource
+const updateResource= (resource) =>{
+  return db.query(`UPDATE resources SET url = $1, title = $2, description = $3, topic_id = $4
+  WHERE id = $5
+  RETURNING *`,
+  [resource.url, resource.title, resource.description, resource.topic_id, resource.id])
+    .then(data => {
+      return data.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+//Add/Update ratings
+const addRatings= (rating) =>{
+  return db.query(`SELECT * FROM ratings WHERE user_id = $1 AND resource_id = $2`, [rating.user_id, rating.resource_id])
+    .then(data => {
+      if(data.rows && data.rows.length > 0){ //UPDATE rating if already present
+        return db.query(`UPDATE ratings SET rate = $1, isLike = $2 WHERE user_id =  $3 AND resource_id = $4
+         RETURNING *`,
+        [rating.rate, rating.isLike, rating.user_id, rating.resource_id])
+        .then(data => {
+          return data.rows[0];
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+      }else{ //INSERT new rating
+        return db.query(`INSERT INTO ratings (user_id, resource_id, rate, isLike)
+        VALUES ($1, $2, $3, $4) RETURNING *`,
+        [rating.user_id, rating.resource_id, rating.rate, rating.isLike])
+          .then(data => {
+            return data.rows[0];
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+//Add comments
+const addComments= (comment) =>{
+  return db.query(`INSERT INTO comments (user_id, resource_id, content)
+  VALUES ($1, $2, $3) RETURNING *`,
+  [comment.user_id, comment.resource_id, comment.content])
+    .then(data => {
+      return data.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 
 module.exports =
   {
     getAllResources,
     getResourcesByUserId,
-    getSpecificResourceByUserId,
     postResourceByUserId,
+    updateResource,
+    addRatings,
+    addComments,
     getResourcebyId
   };
