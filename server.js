@@ -37,7 +37,7 @@ app.use(
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const defaultRoutes = require('./routes/routes');
+const defaultRoutes = require('./routes/view-routes');
 const userApiRoutes = require('./routes/users-api');
 const resourcesApiRoutes = require('./routes/resources-api');
 const loginRoutes = require('./routes/login');
@@ -52,7 +52,6 @@ app.use('/api/resources', resourcesApiRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
-app.use('/addresource', addResource);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
