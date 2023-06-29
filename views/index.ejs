@@ -11,11 +11,12 @@
 
     <section id="section-container">
       <div id="search-bar">
-        <form>
+        <form action="/api/resources" id="searchForm">
           <input type="text" id="searchInput" name="search" placeholder="Quick search...">
           <button type="submit" class="fa-solid fa-magnifying-glass"></button>
         </form>
       </div>
+      <div id="resource-container">
       <!-- Loops items -->
       <% resources.forEach(function(item) { %>
         <a href="/resource?id=<%= item.id %>">
@@ -26,6 +27,7 @@
           </item>
         </a>
       <% }); %>
+    </div>
     </section>
 
   </main>
