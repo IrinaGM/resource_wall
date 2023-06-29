@@ -3,16 +3,16 @@ $(() => {
 //function to add searched resource element to the container
 const renderSearchedResources = function (resources) {
   if (Array.isArray(resources)) {
-      $("#resource-container").empty();
+      $("#search-container").empty();
       resources.forEach((item) => {
-      $res= $(`<a href=${item.url} target="_blank">
+      $res= $(`<a class="itemLink" href="/resource?id=${ item.id }">
       <item>
         <img alt="${ item.title }" src="./images/200x200-JS.png"/>
-        <span>${ item.title}</span>
-        <topic>${ item.topic_id }</topic>
+        <span class="topic">${ item.topic_name}</span>
+        <span class="title">${ item.title }</span>
       </item>
       </a>`);
-      $("#resource-container").append($res);
+      $("#search-container").append($res);
     });
   }
 };
