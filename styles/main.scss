@@ -116,14 +116,17 @@ a:hover, a:active {
 /* Custom Style */
 #add-resource {
   input[type="radio"] + label {
-    background-color: $button-bg-color;
+    background-color: $body-bg-color;
+    border: $border-size solid $border-color;
     border-radius: $border-radius;
-    color: $link-color;
+    color: $color4;
     cursor: pointer;
   }
 
   input[type="radio"]:checked + label {
-    background-color: $link-color;
+    background-color: $color5;
+    border: $border-size solid $color5;
+    border-radius: $border-radius;
     color: $body-bg-color;
   }
 }

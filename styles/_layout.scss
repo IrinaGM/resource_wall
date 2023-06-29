@@ -5,6 +5,22 @@ html {
   margin: 0;
 }
 
+body {
+  padding: 25px 100px;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
 #main-container {
   display: flex;
   flex-direction: row;
@@ -20,6 +36,10 @@ html {
   gap: 30px;
   padding: 20px;
   margin: 5px;
+
+  article {
+    width: 100%;
+  }
 
   item {
     display: flex;
