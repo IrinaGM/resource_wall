@@ -43,9 +43,11 @@ const renderSearchedResources = function (resources) {
     //loop through and set the active class on preceding stars
     while(1 <= pre){
       //check if the classlist contains the active class, if not, add the class
-      if(!document.querySelector('.star-'+pre).classList.contains('is-active')){
-          document.querySelector('.star-'+pre).classList.add('is-active');
-      }
+      if(document.querySelector('.star-'+pre)){
+        if(!document.querySelector('.star-'+pre).classList.contains('is-active')){
+            document.querySelector('.star-'+pre).classList.add('is-active');
+        }
+    }
       //decrement our current index
       --pre;
     }//end of first loop
@@ -54,13 +56,14 @@ const renderSearchedResources = function (resources) {
       let succ = rate+1;
       while(5 >= succ){
           //check if the classlist contains the active class, if yes, remove the class
-          if(document.querySelector('.star-'+succ).classList.contains('is-active')){
+          if(document.querySelector('.star-'+succ) && document.querySelector('.star-'+succ).classList.contains('is-active')){
               document.querySelector('.star-'+succ).classList.remove('is-active');
           }
           //increment current index
           ++succ;
       }
   };
+
   //ratings
   (function(){
     let sr = document.querySelectorAll('.my-star');
@@ -73,12 +76,35 @@ const renderSearchedResources = function (resources) {
             let cs = parseInt(this.getAttribute("data-star"));
             //output current clicked star value
             document.querySelector('#rating-output').value = cs;
-           setRating(cs);           
+           setRating(cs);  
+           let resource_id =  document.querySelector('#resource-id').value;           
+           //call api to update DB
+           $.ajax({ //ajax call
+            type: "POST",
+            url: `/api/resources/${resource_id}/ratings`,
+            data: $("#rating-form").serialize(),
+            success: function (data) {
+             // Ajax call completed successfully   
+             //update average-rating      
+             let rating_value= 'No Rating';
+             if(data.data["avg-rating"].average)
+             rating_value=data.data["avg-rating"].average;
+             document.querySelector('#avg_rating').innerHTML=
+             `Rating: ${rating_value} / 5`;             
+            },
+            error: function (data) {
+              // Some error in ajax call
+              $(".error").append("Some error!");
+              $(".error").slideDown(500);
+            },
+          });
+
         })//end of click event
         i++;
     }//end of while loop
-  })();//end of function   
-  setRating( document.querySelector('#rating-output').value );
+  })();//end of function  
+  if(document.querySelector('#rating-output')) 
+    setRating( document.querySelector('#rating-output').value );
 });
 
 // Navigate back to the previous page
