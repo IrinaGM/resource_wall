@@ -58,7 +58,7 @@ const getResourcesByUserId = (user_id) => {
   const queryString1 = `
     SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
-    JOIN ratings ON ratings.resource_id = resources.id
+    LEFT JOIN ratings ON ratings.resource_id = resources.id
     JOIN topics ON topics.id = resources.topic_id
     WHERE resources.user_id = $1;
   `;
@@ -67,7 +67,7 @@ const getResourcesByUserId = (user_id) => {
   const queryString2 = `
     SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
-    JOIN ratings ON ratings.resource_id = resources.id
+    LEFT JOIN ratings ON ratings.resource_id = resources.id
     JOIN topics ON topics.id = resources.topic_id
     WHERE ratings.islike = true AND ratings.user_id = $1;
   `;
