@@ -48,18 +48,35 @@ const getResourcebyId = (id) => {
     });
 };
 
-// USER-STORY-05: Get Resources by USER_ID
+// USER-STORY-05: Get Resources by USER_ID + USER-STORY-09: Includes Liked Resources
 const getResourcesByUserId = (user_id) => {
-  // define query
-  const queryString = `SELECT * FROM resources WHERE user_id = $1;`;
+  // Show resources added by user
+  const queryString1 = `
+    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id
+    FROM resources
+    JOIN ratings ON ratings.resource_id = resources.id
+    WHERE resources.user_id = $1;
+  `;
+
+  // Show resources liked by user
+  const queryString2 = `
+    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id
+    FROM resources
+    JOIN ratings ON ratings.resource_id = resources.id
+    WHERE ratings.islike = true AND ratings.user_id = $1;
+  `;
 
   //define values
   const values = [user_id];
 
-  // query the db
-  return db.query(queryString, values)
-    .then(data => {
-      return data.rows;
+  // Query the database for both queries concurrently
+  const query1 = db.query(queryString1, values).then(data => data.rows);
+  const query2 = db.query(queryString2, values).then(data => data.rows);
+
+  // Return a promise that resolves when both queries have completed
+  return Promise.all([query1, query2])
+    .then(([ userResources, likedResources ]) => {
+      return { userResources, likedResources };
     })
     .catch((err) => {
       console.log(err.message);
