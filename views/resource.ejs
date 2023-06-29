@@ -27,7 +27,7 @@
         <article>
           <section id="resource-title">
             <h1><%= item.title %></h1>
-            <h3><%= item.topic_name %></h3>
+            <button class="disabledBtn"><%= item.topic_name %></button>
           </section>
 
           <section id="resource-stat">
@@ -54,7 +54,7 @@
                 <label for="reviewInput"><h3>Add your review:</h3></label>
                 <textarea type="text" id="reviewInput" name="review" placeholder="Add your review..."></textarea>
               </fieldset>
-              <button type="submit">Submit Review</button>
+                <button type="submit">Submit Review</button>
             </form>
           </section>
         </article>

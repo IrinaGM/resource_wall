@@ -10,7 +10,11 @@ const checkHttp = (url) => {
 
 const getAllResources = () => {
   // define query
-  const queryString = 'SELECT * FROM resources;';
+  const queryString = `
+    SELECT resources.id, resources.url, resources.title, resources.description, resources.user_id, resources.topic_id, topics.name as topic_name
+    FROM resources
+    JOIN topics ON topics.id = resources.topic_id;
+  `;
 
   // query the db
   return db.query(queryString)
@@ -52,17 +56,19 @@ const getResourcebyId = (id) => {
 const getResourcesByUserId = (user_id) => {
   // Show resources added by user
   const queryString1 = `
-    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id
+    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
-    JOIN ratings ON ratings.resource_id = resources.id
+    LEFT JOIN ratings ON ratings.resource_id = resources.id
+    JOIN topics ON topics.id = resources.topic_id
     WHERE resources.user_id = $1;
   `;
 
   // Show resources liked by user
   const queryString2 = `
-    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id
+    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
-    JOIN ratings ON ratings.resource_id = resources.id
+    LEFT JOIN ratings ON ratings.resource_id = resources.id
+    JOIN topics ON topics.id = resources.topic_id
     WHERE ratings.islike = true AND ratings.user_id = $1;
   `;
 

@@ -5,6 +5,22 @@ html {
   margin: 0;
 }
 
+body {
+  padding: 25px 100px;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
 #main-container {
   display: flex;
   flex-direction: row;
@@ -21,15 +37,21 @@ html {
   padding: 20px;
   margin: 5px;
 
+  article {
+    width: 100%;
+  }
+
   item {
     display: flex;
     flex-direction: column;
   }
 
   img {
-    width: 150px;
-    height: 150px;
     margin: 0px 0px 10px 0px;
+  }
+
+  .itemLink {
+    width: 150px;
   }
 
   #closeBtn {

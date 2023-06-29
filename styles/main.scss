@@ -2,19 +2,19 @@
 @use 'nav';
 @use 'input';
 
-/* Colour Theme
-#f3f3f3 Seasalt
-#E3F2FD Alice Blue
-#DB5461 Indian Red
-#686963 Dim Gray
-#8AA29E Cambridge Blue
-*/
+// Color Theme
+$color1: #f3f3f3; //Seasalt
+$color2: #E3F2FD; //Alice Blue
+$color3: #DB5461; //Indian Red
+$color4: #686963; //Dim Gray
+$color5: #8AA29E; //Cambridge Blue
 
 $font-stack: Helvetica, sans-serif;
 $body-bg-color: #FFF;
 $container-bg-color: #FFF;
 $border-size: 2px;
 $border-color: #E3F2FD;
+$border-color2: #8AA29E;
 $border-radius: 10px;
 $link-color: #DB5461;
 $link-color-hover: #686963;
@@ -31,9 +31,9 @@ body {
 h1, h2, h3, h4, h5 {
   display: inline-block;
   margin: 0;
-  padding: 0;
+  padding: 0px 0px 10px 0px;
   width: 100%;
-  color: $link-color;
+  color: $color4;
 }
 
 a, a:visited {
@@ -42,8 +42,7 @@ a, a:visited {
 }
 
 a:hover, a:active {
-  background-color: $link-color;
-  color: $body-bg-color;
+  color: $link-color-hover;
 }
 
 /* Add Link with Style Button */
@@ -77,20 +76,35 @@ a:hover, a:active {
 #section-container {
   item {
     border-radius: $border-radius;
+
+    img {
+      border-radius: $border-radius;
+    }
+
+    .title {
+      padding: 5px;
+      font-size: 1em;
+    }
+
+    .topic {
+      padding: 5px;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: $link-color-hover;
+    }
   }
 
-  img {
-    border-radius: $border-radius;
+  a.itemLink, a.itemLink:visited {
+    border: 2px solid $border-color;
+    background-color: $body-bg-color;
+    border-radius: 15px;
+    padding: 5px;
   }
 
-  span {
-    font-size: 1.1em;
-  }
-
-  topic {
-    font-size: 0.9em;
-    font-weight: bold;
-    color: $link-color;
+  a.itemLink:hover, a.itemLink:active {
+    border: 2px solid $link-color;
+    background-color: $body-bg-color;
+    border-radius: 15px;
   }
 }
 
@@ -102,14 +116,40 @@ a:hover, a:active {
 /* Custom Style */
 #add-resource {
   input[type="radio"] + label {
-    background-color: $button-bg-color;
+    background-color: $body-bg-color;
+    border: $border-size solid $border-color;
     border-radius: $border-radius;
-    color: $link-color;
+    color: $color4;
     cursor: pointer;
   }
 
   input[type="radio"]:checked + label {
-    background-color: $link-color;
+    background-color: $color5;
+    border: $border-size solid $color5;
+    border-radius: $border-radius;
     color: $body-bg-color;
+  }
+}
+
+#resource-container {
+  article {
+    h1 {
+      font-size: 2.5em;
+      font-weight: normal;
+    }
+
+    h2 {
+      font-size: 1.1em;
+    }
+
+    h3 {
+      font-size: 1.5em;
+      font-weight: normal;
+    }
+
+    button.disabledBtn, button.disabledBtn:active, button.disabledBtn:hover, button.disabledBtn:visited {
+      background-color: $button-bg-color;
+      color: $link-color-hover;
+    }
   }
 }

@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const resourceQueries = require('../db/queries/resources');
+const userQueries = require('../db/queries/users');
 
 /*
  * All the GET goes here
@@ -31,16 +32,16 @@ router.get('/', (req, res) => {
 // USER-STORY-01: Add New Resource
 router.post('/add', (req, res) => {
   const { title, url, description, options } = req.body;
-  const user_id = req.session.user_id;
-
-  resourceQueries.postResourceByUserId(title, url, description, options, user_id)
-    .then(resources => {
-      console.log(resources)
-    })
-    .catch(err => {
-      res.status(400).send(err);
-    })
-    res.redirect("/my-resources");
+  userQueries.getUserWithId(req.session.user_id)
+    .then((userData) => {
+      resourceQueries.postResourceByUserId(title, url, description, options, userData.id)
+        .then(() => {
+          res.redirect("/my-resources");
+        })
+        .catch(err => {
+          res.status(400).send(err);
+        })
+      });
 });
 
 //api to update a resource

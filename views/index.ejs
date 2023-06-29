@@ -19,11 +19,11 @@
       <div id="resource-container">
       <!-- Loops items -->
       <% resources.forEach(function(item) { %>
-        <a href="/resource?id=<%= item.id %>">
+        <a class="itemLink" href="/resource?id=<%= item.id %>">
           <item>
             <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
-            <span><%= item.title %></span>
-            <topic><%= item.topic_id %></topic>
+            <span class="topic"><%= item.topic_name %></span>
+            <span class="title"><%= item.title %></span>
           </item>
         </a>
       <% }); %>

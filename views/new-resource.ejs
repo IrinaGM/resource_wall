@@ -8,31 +8,35 @@
   <main id="main-container">
 
     <section id="section-container">
-      <h1>Add Resource</h1>
+      <article>
+        <h1>Add Resource</h1>
 
-      <form id="add-resource" method="POST" action="/api/resources/add">
-        <h4>Enter your resource details:</h4>
-        <fieldset>
-          <label for="title">Title:</label>
-          <input id="title" type="text" name="title" placeholder="Enter resource title..."/>
-        </fieldset>
-        <fieldset>
-          <label for="url">URL:</label>
-          <input id="url" type="text" name="url" placeholder="Add URL https://" />
-        </fieldset>
-        <fieldset>
-          <label for="desc">Description:</label>
-          <input id="desc" type="text" name="description" placeholder="Add description..." />
-        </fieldset>
-        <div>
-          <h4>Select a topic:</h4>
-          <input type="radio" id="topic-01" name="options" value="1"><label for="topic-01">Javascript</label>
-          <input type="radio" id="topic-02" name="options" value="2"><label for="topic-02">HTML</label>
-          <input type="radio" id="topic-03" name="options" value="3"><label for="topic-03">CSS</label>
-        </div>
-        <button type="button" onclick="window.location.href = '/';">Cancel</button>
-        <button type="submit">Save</button>
-      </form>
+        <form id="add-resource" method="POST" action="/api/resources/add">
+          <h4>Enter your resource details:</h4>
+          <fieldset>
+            <label for="title">Title:</label>
+            <input id="title" type="text" name="title" placeholder="Enter resource title..."/>
+          </fieldset>
+          <fieldset>
+            <label for="url">URL:</label>
+            <input id="url" type="text" name="url" placeholder="Add URL https://" />
+          </fieldset>
+          <fieldset>
+            <label for="desc">Description:</label>
+            <textarea id="desc" type="text" name="description" placeholder="Add description..."></textarea>
+          </fieldset>
+          <div>
+            <h4>Select a topic:</h4>
+            <input type="radio" id="topic-01" name="options" value="1"><label for="topic-01">Javascript</label>
+            <input type="radio" id="topic-02" name="options" value="2"><label for="topic-02">HTML</label>
+            <input type="radio" id="topic-03" name="options" value="3"><label for="topic-03">CSS</label>
+          </div>
+          <div class="alignRight">
+            <button type="button" onclick="goBack()">Cancel</button>
+            <button type="submit">Save</button>
+          </div>
+        </form>
+      </article>
     </section>
 
   </main>
