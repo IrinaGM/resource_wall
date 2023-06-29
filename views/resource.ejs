@@ -32,8 +32,8 @@
           </section>
 
           <section id="resource-stat">
-            <div>Rating: <%= item.avg_rating %> / 5</div>
-            <div>Liked: <%= item.total_like %></div>
+            <div>Rating: <% if (item.avg_rating === null) { %>No Rating<% } else { %><%= item.avg_rating %> / 5 <% }; %></div>
+            <div>Liked: <% if (item.total_like === null) { %>0<% } else { %><%= item.total_like %><% }; %></div>
           </section>
 
           <section id="resource-desc">
