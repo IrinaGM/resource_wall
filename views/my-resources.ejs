@@ -10,17 +10,22 @@
     <% include partials/sidemenu %>
 
     <section id="section-container">
-      <h1>My Resources</h1>
-      <div id="search-bar">
-        <form action="/api/resources/user"  id="myResourcesSearchForm">
-          <input type="text" id="searchInput" name="search" placeholder="Quick search...">
-          <button type="submit" class="fa-solid fa-magnifying-glass"></button>
-        </form>
-      </div>
-      <div id="resource-container">
+      <h2>My Resources</h2>
       <!-- Loops items -->
-      <% resources.forEach(function(item) { %>
-        <a href="<%= item.url %>" target="_blank">
+      <% resources.userResources.forEach(function(item) { %>
+        <a href="/resource?id=<%= item.id %>">
+          <item>
+            <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+            <span><%= item.title %></span>
+            <topic><%= item.topic_id %></topic>
+          </item>
+        </a>
+      <% }); %>
+
+      <h2>Liked Resources</h2>
+      <!-- Loops items -->
+      <% resources.likedResources.forEach(function(item) { %>
+        <a href="/resource?id=<%= item.id %>">
           <item>
             <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
             <span><%= item.title %></span>

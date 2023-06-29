@@ -23,6 +23,23 @@ router.get('/', (req, res) => {
     });
 });
 
+// USER-STORY-04: Resource Page View
+router.get('/resource', (req, res) => {
+  resourceQueries.getResourcebyId(req.query.id)
+    .then(resources => {
+      userQueries.getUserWithId(req.session.user_id)
+      .then((userData) => {
+        const item = resources[0];
+        res.render("resource", { item, user: userData });
+      })
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 // USER-STORY-05: My Resources Page (loggedIn)
 router.get('/my-resources', (req, res) => {
   if (!req.session.user_id) {
