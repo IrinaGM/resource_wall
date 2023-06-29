@@ -72,12 +72,13 @@ const renderSearchedResources = function (resources) {
             //current star
             let cs = parseInt(this.getAttribute("data-star"));
             //output current clicked star value
-            document.querySelector('#output').value = cs;
+            document.querySelector('#rating-output').value = cs;
            setRating(cs);           
         })//end of click event
         i++;
     }//end of while loop
-  })();//end of function
+  })();//end of function   
+  setRating( document.querySelector('#rating-output').value );
 });
 
 // Navigate back to the previous page

@@ -163,6 +163,17 @@ const addComments= (comment) =>{
       console.log(err.message);
     });
 };
+//USER STORY - 06
+const getUserRatingForResource = (user_id,resource_id)=>{  
+  return db.query(`SELECT rate, isLike FROM ratings WHERE user_id=$1 AND resource_id =$2`,
+    [user_id,resource_id])
+    .then(data => {      
+      return data.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 
 module.exports =
   {
@@ -172,5 +183,6 @@ module.exports =
     postResourceByUserId,
     updateResource,
     addRatings,
-    addComments
+    addComments,
+    getUserRatingForResource
   };

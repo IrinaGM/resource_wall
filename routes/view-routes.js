@@ -26,12 +26,21 @@ router.get('/', (req, res) => {
 // USER-STORY-04: Resource Page View
 router.get('/resource', (req, res) => {
   resourceQueries.getResourcebyId(req.query.id)
-    .then(resources => {
-      userQueries.getUserWithId(req.session.user_id)
-      .then((userData) => {
-        const item = resources[0];        
-        res.render("resource", { item, user: userData });
-      })      
+    .then(resources => { 
+      resourceQueries.getUserRatingForResource(req.session.user_id, req.query.id) 
+      .then(ratings => {
+        if(!ratings){
+          ratings= {};
+          ratings.rate=0;
+          ratings.isLike=false;          
+        }        
+        userQueries.getUserWithId(req.session.user_id)
+        .then((userData) => {
+          const item = resources[0];   
+          const rating = ratings;     
+          res.render("resource", { item, user: userData, rating });
+        })     
+      })
     })
     .catch(err => {
       res
