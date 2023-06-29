@@ -16,18 +16,18 @@
           <button type="submit" class="fa-solid fa-magnifying-glass"></button>
         </form>
       </div>
-      <div id="resource-container">
-      <!-- Loops items -->
-      <% resources.forEach(function(item) { %>
-        <a class="itemLink" href="/resource?id=<%= item.id %>">
-          <item>
-            <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
-            <span class="topic"><%= item.topic_name %></span>
-            <span class="title"><%= item.title %></span>
-          </item>
-        </a>
-      <% }); %>
-    </div>
+      <div id="search-container">
+        <!-- Loops items -->
+        <% resources.forEach(function(item) { %>
+          <a class="itemLink" href="/resource?id=<%= item.id %>">
+            <item>
+              <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+              <span class="topic"><%= item.topic_name %></span>
+              <span class="title"><%= item.title %></span>
+            </item>
+          </a>
+        <% }); %>
+      </div>
     </section>
 
   </main>

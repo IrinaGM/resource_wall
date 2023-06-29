@@ -27,7 +27,7 @@ body {
   justify-content: space-between;
 }
 
-#section-container,#resource-container {
+#section-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -51,6 +51,7 @@ body {
   }
 
   .itemLink {
+    display: block;
     width: 150px;
   }
 
@@ -60,6 +61,15 @@ body {
     top: 110px;
     font-size: 1.5em;
     padding: 10px 13px;
+  }
+
+  #search-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-items: flex-start;
+    gap: 30px;
   }
 }
 
