@@ -3,7 +3,7 @@
   <div id="nav-main">
     <a href="/" class="nav-link">Home</a>
     <a href="/my-resources" class="nav-link">My Resources</a>
-    <% if (typeof user_id !== 'undefined') { %>
+    <% if (user !== null) { %>
       <a href="/new-resource" class="nav-link">Add Resource</a>
     <% } %>
   </div>

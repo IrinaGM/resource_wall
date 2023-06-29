@@ -68,7 +68,7 @@ a:hover, a:active {
 }
 
 /* Add Border Style */
-#side-menu-container, #section-container, input {
+#side-menu-container, #section-container, input, textarea {
   border: $border-size solid $border-color;
   border-radius: $border-radius;
 }
