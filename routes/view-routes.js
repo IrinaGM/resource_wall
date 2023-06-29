@@ -29,9 +29,9 @@ router.get('/resource', (req, res) => {
     .then(resources => {
       userQueries.getUserWithId(req.session.user_id)
       .then((userData) => {
-        const item = resources[0];
+        const item = resources[0];        
         res.render("resource", { item, user: userData });
-      })
+      })      
     })
     .catch(err => {
       res
