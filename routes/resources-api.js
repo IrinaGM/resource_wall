@@ -102,22 +102,4 @@ router.post("/:id/comments", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
-//api that returns resources for loggedIn user in JSOn format
-//api to get resources only for the loggedIn user
-router.get('/user', (req, res) => {
-   const userId = req.session.user_id;
-   if (!userId) {
-     return res.send({ error: "Please log in!" });
-   }
-   resourceQueries
-     .getResourcesByUserId(userId)
-     .then((resources) => {
-       res.json({ resources });
-     })
-     .catch((err) => {
-       res.status(500).json({ error: err.message });
-     });
- });
-
 module.exports = router;

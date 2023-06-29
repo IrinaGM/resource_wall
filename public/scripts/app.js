@@ -37,32 +37,6 @@ const renderSearchedResources = function (resources) {
       console.log(`error: ${err.message} `);
     });
   });
-  let myResourcesform = $("#myResourcesSearchForm");
-  myResourcesform.submit((event) => {
-    event.preventDefault(); // prevents default behavior of the event
-    let textArea = $("#searchInput");
-    const url = myResourcesform.attr("action");
-    if (!textArea.val() || textArea.val().length === 0) { // if search data is empty
-      $.ajax(url, { method: "GET" });
-    }
-    const search_text= textArea.val().toUpperCase();
-    $.ajax(url, { method: "GET" }).then(function (all_resources) {
-      //perform search
-      if(all_resources){
-      let output= all_resources.resources;
-      const searchedResources=  output.filter(res => res.title.toUpperCase().includes(search_text) || res.description.toUpperCase().includes(search_text));
-      renderSearchedResources(searchedResources);
-      }
-    })
-    .catch(err => {
-      console.log(`error: ${err.message} `);
-    });
-  });
-
-
-
-
-
 });
 
 // Navigate back to the previous page
