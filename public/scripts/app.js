@@ -41,7 +41,7 @@ const renderSearchedResources = function (resources) {
   myResourcesform.submit((event) => {
     event.preventDefault(); // prevents default behavior of the event
     let textArea = $("#searchInput");
-    const url = "/api/resources/users/"
+    const url = myResourcesform.attr("action");
     if (!textArea.val() || textArea.val().length === 0) { // if search data is empty
       $.ajax(url, { method: "GET" });
     }
