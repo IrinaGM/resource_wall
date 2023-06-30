@@ -74,11 +74,9 @@ router.post("/:id/ratings", (req, res) => {
   const rating = {};
   rating.rate= req.body.rate;  
   rating.user_id = userId;  
-  rating.resource_id = req.params.id;
-  if(!req.body.isLike)
-    rating.isLike=false;
-  else
-    rating.isLike=req.body.isLike;
+  rating.resource_id = req.params.id;    
+  rating.isLike=req.body.isLike == 1? true:false;
+    
   resourceQueries
     .addRatings(rating)
     .then((data) => {
