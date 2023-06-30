@@ -187,8 +187,7 @@ $(() => {
             // loops through comments
             // calls createCommentElement for each comment
             // takes return value and appends it to the comments container
-            if (Array.isArray(comments)) {
-              comments.reverse();
+            if (Array.isArray(comments)) {              
               $("#review-container").empty();
               comments.forEach((element) => {
                 const $comment = createCommentElement(element);
@@ -204,6 +203,31 @@ $(() => {
              renderComments(moreComments.comments);
           });
         };
+        //Handling submit event of the form with ajax calls to dynamically update the page
+        let commentsForm = $("#comments-form");
+        commentsForm.submit((event) => {
+          event.preventDefault(); // prevents default behavior of the event
+          let textArea = $("#reviewInput");
+          if (!textArea.val() || textArea.val().length === 0) { // if tweet data is empty        
+            return;
+          }  
+          let resource_id =  document.querySelector('#resource-id').value;            
+          $.ajax({ //ajax call
+            type: "POST",
+            url: `/api/resources/${resource_id}/comments`,
+            data: commentsForm.serialize(),
+            success: function (comments) {
+              // Ajax call completed successfully
+
+              loadComments(); // fetch comments from the server and load on UI
+              textArea.val(""); //clear the text area where comment is entered
+            },
+            error: function (data) {
+              // Some error in ajax call
+              console.log(`error : ${data}`);
+            },
+          });
+        });
         loadComments();
   });
   

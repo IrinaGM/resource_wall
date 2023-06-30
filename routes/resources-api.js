@@ -93,8 +93,9 @@ router.post("/:id/comments", (req, res) => {
   const userId = req.session.user_id;
   if (!userId) {
     return res.send({ error: "Please log in!" });
-  }
-  const comment = req.body;
+  }  
+  let comment = {};
+  comment.content =req.body.review;
   comment.user_id = userId;
   comment.resource_id = req.params.id;
   resourceQueries
