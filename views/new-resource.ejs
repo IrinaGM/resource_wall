@@ -10,15 +10,16 @@
     <section id="section-container">
       <article>
         <h1>Add Resource</h1>
-
-        <form id="add-resource" method="POST" action="/api/resources/add">
+        <form id="add-resource" method="POST" action="/api/resources/add" onsubmit="validateForm(event)">
           <h4>Enter your resource details:</h4>
           <fieldset>
             <label for="title">Title:</label>
+            <div id="warning-title" class="warning-box"></div>
             <input id="title" type="text" name="title" placeholder="Enter resource title..."/>
           </fieldset>
           <fieldset>
             <label for="url">URL:</label>
+            <div id="warning-url" class="warning-box"></div>
             <input id="url" type="text" name="url" placeholder="Add URL https://" />
           </fieldset>
           <fieldset>
@@ -27,6 +28,7 @@
           </fieldset>
           <div>
             <h4>Select a topic:</h4>
+            <div id="warning-topic" class="warning-box"></div>
             <input type="radio" id="topic-01" name="options" value="1"><label for="topic-01">Javascript</label>
             <input type="radio" id="topic-02" name="options" value="2"><label for="topic-02">HTML</label>
             <input type="radio" id="topic-03" name="options" value="3"><label for="topic-03">CSS</label>
@@ -38,6 +40,8 @@
         </form>
       </article>
     </section>
+
+    <script src="/scripts/warning.js"></script>
 
   </main>
   <!-- Include footer information -->
