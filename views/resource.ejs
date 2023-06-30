@@ -12,7 +12,8 @@
         <aside>
           <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
           <a class="nav-link" href="<%= item.url %>" target="_blank">Visit Site</a>
-          <div>           
+          <% if (user !== null) { %>
+          <div>
             <div class="star-rating nav-link" id="rating">
               <i class="my-star fa-regular fa-star star-1" data-star="1"></i>
               <i class="my-star fa-regular fa-star star-2" data-star="2"></i>
@@ -22,10 +23,11 @@
             </div>
             <form id="rating-form">
             <input type="number" name="rate" readonly id="rating-output" value="<%= rating.rate%>"/>
-            <input type="number" readonly id="resource-id" value="<%= item.id%>"/>
-            <button class="fa-regular fa-heart" id="like"></button>
+            <input type="number" readonly id="resource-id" value="<%= item.id%>"/>          
+            <i class="fa-regular fa-heart" id="like"></i>
           </form>
           </div>
+          <% } %>
         </aside>
 
         <article>
@@ -51,7 +53,7 @@
               <span>Review text here...</span>
             </div>
           </section>
-
+          <% if (user !== null) { %>
           <section id="review-input">
             <form>
               <fieldset>
@@ -61,6 +63,7 @@
                 <button type="submit">Submit Review</button>
             </form>
           </section>
+          <% } %>
         </article>
 
       </item>
