@@ -6,6 +6,7 @@ const express = require('express');
 const router  = express.Router();
 const resourceQueries = require('../db/queries/resources');
 const userQueries = require('../db/queries/users');
+const topicQueries = require('../db/queries/topics');
 
 // Landing Page
 router.get('/', (req, res) => {
@@ -13,7 +14,10 @@ router.get('/', (req, res) => {
     .then(resources => {
       userQueries.getUserWithId(req.session.user_id)
       .then((userData) => {
-        res.render("index", { resources, user: userData });
+        topicQueries.getTopics()
+        .then((topics) => {
+          res.render("index", { resources, user: userData, topics });
+        })
       })
     })
     .catch(err => {
@@ -49,7 +53,10 @@ router.get('/my-resources', (req, res) => {
     .then(resources => {
       userQueries.getUserWithId(req.session.user_id)
       .then((userData) => {
-        res.render("my-resources", { resources, user: userData });
+        topicQueries.getTopics()
+        .then((topics) => {
+        res.render("my-resources", { resources, user: userData, topics });
+        })
       })
     })
     .catch(err => {

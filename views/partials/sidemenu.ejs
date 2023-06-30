@@ -1,6 +1,6 @@
 <nav id="side-menu-container">
   <h4>Topics</h4>
-  <a href="/resources?topic=javascript" class="nav-link">Javascript</a>
-  <a href="/resources?topic=html" class="nav-link">HTML</a>
-  <a href="/resources?topic=css" class="nav-link">CSS</a>
+  <% topics.forEach(function(topic) { %>
+    <a href="/resources?topicId=<%= topic.id %>" class="nav-link"><%= topic.name %></a>
+  <% }); %>
 </nav>
