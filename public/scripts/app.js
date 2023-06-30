@@ -105,6 +105,19 @@ const renderSearchedResources = function (resources) {
   })();//end of function  
   if(document.querySelector('#rating-output')) 
     setRating( document.querySelector('#rating-output').value );
+
+    if(document.querySelector('#like')) {
+      let likeButton = document.querySelector('#like');
+      likeButton.addEventListener('click', function(){
+       if(likeButton.classList.contains('fa-regular')){
+        likeButton.classList.remove("fa-regular");
+        likeButton.classList.add("fa-solid");
+       }else{
+        likeButton.classList.add("fa-regular");
+        likeButton.classList.remove("fa-solid");
+       }
+      });
+    }    
 });
 
 // Navigate back to the previous page
