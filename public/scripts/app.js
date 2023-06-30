@@ -86,16 +86,15 @@ $(() => {
               success: function (data) {
                // Ajax call completed successfully   
                //update average-rating      
-               let rating_value= 'No Rating';
-               console.log(data);
-               if(data.data["avg-rating"]){
+               let rating_value= 'No Rating';               
+               if(data.data["avg-rating"] !== null && data.data["avg-rating"]!== undefined){
                rating_value=data.data["avg-rating"];
                }
                document.querySelector('#avg_rating').innerHTML=
                `Rating: ${rating_value} / 5`;   
                //update total likes
                let totalLikes = 0;
-               if(data.data["totalLikes"]) {
+               if(data.data["totalLikes"]!== null && data.data["totalLikes"] !== undefined) {
                 totalLikes =data.data["totalLikes"];                
                }   
                document.querySelector('#total-likes').innerHTML=`Liked: ${totalLikes}`;      
@@ -134,12 +133,20 @@ $(() => {
               success: function (data) {
                // Ajax call completed successfully   
                //update average-rating     
-               console.log(data); 
-               let rating_value= 'No Rating';
-               if(data.data["avg-rating"].average)
-               rating_value=data.data["avg-rating"].average;
+              // Ajax call completed successfully   
+               //update average-rating      
+               let rating_value= 'No Rating';               
+               if(data.data["avg-rating"] !== null && data.data["avg-rating"]!== undefined){
+               rating_value=data.data["avg-rating"];
+               }
                document.querySelector('#avg_rating').innerHTML=
-               `Rating: ${rating_value} / 5`;             
+               `Rating: ${rating_value} / 5`;   
+               //update total likes
+               let totalLikes = 0;
+               if(data.data["totalLikes"]!== null && data.data["totalLikes"] !== undefined) {
+                totalLikes =data.data["totalLikes"];                
+               }   
+               document.querySelector('#total-likes').innerHTML=`Liked: ${totalLikes}`;            
               },
               error: function (data) {
                 // Some error in ajax call
