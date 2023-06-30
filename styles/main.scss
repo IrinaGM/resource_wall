@@ -1,6 +1,7 @@
 @use 'layout';
 @use 'nav';
 @use 'input';
+@use 'responsive';
 
 // Color Theme
 $color1: #f3f3f3; //Seasalt
@@ -38,12 +39,20 @@ h1, h2, h3, h4, h5 {
 }
 
 a, a:visited {
+  display: inline-flex;
   text-decoration: none;
   color: $link-color;
 }
 
 a:hover, a:active {
   color: $link-color-hover;
+}
+
+#nav-user {
+  span {
+    padding: 0px 10px;
+    color: $link-color-hover;
+  }
 }
 
 /* Add Link with Style Button */
