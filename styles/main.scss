@@ -71,6 +71,11 @@ a:hover, a:active {
   color: $body-bg-color;
 }
 
+.topicBtn.selected{
+  background-color: #db5461;
+  color: $body-bg-color;
+}
+
 /* Add Background Color */
 #side-menu-container, #section-container {
   background-color: $container-bg-color;
