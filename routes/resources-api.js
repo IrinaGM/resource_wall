@@ -93,8 +93,9 @@ router.post("/:id/comments", (req, res) => {
   const userId = req.session.user_id;
   if (!userId) {
     return res.send({ error: "Please log in!" });
-  }
-  const comment = req.body;
+  }  
+  let comment = {};
+  comment.content =req.body.review;
   comment.user_id = userId;
   comment.resource_id = req.params.id;
   resourceQueries
@@ -104,6 +105,19 @@ router.post("/:id/comments", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+    });
+});
+
+//api to get comments for a resource
+router.get('/:id/comments', (req, res) => {
+  resourceQueries.getCommentsForResource(req.params.id)
+    .then(comments => {
+      res.json({ comments });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
     });
 });
 module.exports = router;

@@ -207,6 +207,17 @@ const getUserRatingForResource = (user_id,resource_id)=>{
       console.log(err.message);
     });
 };
+//USER STORY 8
+const getCommentsForResource = (resource_id)=>{  
+  return db.query(`SELECT c.*, u.name AS username FROM comments c LEFT JOIN users u ON c.user_id= u.id  WHERE resource_id =$1 `,
+    [resource_id])
+    .then(data => {      
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 
 module.exports =
   {
@@ -217,5 +228,6 @@ module.exports =
     updateResource,
     addRatings,
     addComments,
-    getUserRatingForResource
+    getUserRatingForResource,
+    getCommentsForResource
   };

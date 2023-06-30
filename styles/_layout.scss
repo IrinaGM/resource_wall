@@ -179,4 +179,14 @@ body {
   #rating-output,#resource-id,#is-like{
     display: none;
   }
+  .fa-solid.fa-heart{
+    color:red;
+  }
+  .fa-regular.fa-heart{
+    color:red;
+  }
+  .fa-heart{
+    padding: 15px;
+    height: 20px;
+  }
 }
