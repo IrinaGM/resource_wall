@@ -1,55 +1,47 @@
 function validateForm(event) {
-  // Prevent submit if fails check
   event.preventDefault();
 
-  var title = document.getElementById('title').value;
-  var url = document.getElementById('url').value;
-  var options = document.getElementsByName('options');
-  var topicSelected = false;
+  const formValues = {
+    title: document.getElementById('title').value.trim(),
+    url: document.getElementById('url').value.trim(),
+    options: document.getElementsByName('options')
+  };
 
-  // Check title
-  if (title.trim() === '') {
-    showWarningTitle('Please enter the resource\'s title.');
+  if (!validateField(formValues.title, 'title', 'Please enter the resource\'s title.')) {
     return;
   }
 
-  // Check url
-  if (url.trim() === '') {
-    showWarningUrl('Please enter the resource\'s URL.');
+  if (!validateField(formValues.url, 'url', 'Please enter the resource\'s URL.')) {
     return;
   }
 
-  // Check topic
-  for (var i = 0; i < options.length; i++) {
-    if (options[i].checked) {
-      topicSelected = true;
-      break;
-    }
-  }
-
-  if (!topicSelected) {
-    showWarningTopic('Please select a topic.');
+  if (!validateSelection(formValues.options, 'topic', 'Please select a topic.')) {
     return;
   }
 
-  // If all validations pass, submit the form
   event.target.submit();
 }
 
-function showWarningTitle(message) {
-  var warningBox = document.getElementById('warning-title');
-  warningBox.innerHTML = message;
-  warningBox.style.display = 'block';
+function validateField(value, fieldId, errorMessage) {
+  if (value === '') {
+    showWarningMessage(fieldId, errorMessage);
+    return false;
+  }
+  return true;
 }
 
-function showWarningUrl(message) {
-  var warningBox = document.getElementById('warning-url');
-  warningBox.innerHTML = message;
-  warningBox.style.display = 'block';
+function validateSelection(options, fieldId, errorMessage) {
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].checked) {
+      return true;
+    }
+  }
+  showWarningMessage(fieldId, errorMessage);
+  return false;
 }
 
-function showWarningTopic(message) {
-  var warningBox = document.getElementById('warning-topic');
+function showWarningMessage(fieldId, message) {
+  const warningBox = document.getElementById(`warning-${ fieldId }`);
   warningBox.innerHTML = message;
   warningBox.style.display = 'block';
 }
