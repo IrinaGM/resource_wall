@@ -8,16 +8,26 @@ const checkHttp = (url) => {
   return url;
 };
 
-const getAllResources = () => {
+const getAllResources = (topic_id) => {
+  //define query values
+  const values = [];
+
   // define query
-  const queryString = `
+  let queryString = `
     SELECT resources.id, resources.url, resources.title, resources.description, resources.user_id, resources.topic_id, topics.name as topic_name
     FROM resources
-    JOIN topics ON topics.id = resources.topic_id;
+    JOIN topics ON topics.id = resources.topic_id
+    WHERE 1=1
   `;
 
+  // if topic id is truethy chain topic_id param to query
+  if (topic_id){
+    values.push(topic_id);
+    queryString += ` AND resources.topic_id = $1`
+  }
+
   // query the db
-  return db.query(queryString)
+  return db.query(queryString, values)
     .then(data => {
       return data.rows;
     })
@@ -53,27 +63,34 @@ const getResourcebyId = (id) => {
 };
 
 // USER-STORY-05: Get Resources by USER_ID + USER-STORY-09: Includes Liked Resources
-const getResourcesByUserId = (user_id) => {
+const getResourcesByUserId = (user_id, topic_id) => {
   // Show resources added by user
-  const queryString1 = `
+  let queryString1 = `
     SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
     LEFT JOIN ratings ON ratings.resource_id = resources.id
     JOIN topics ON topics.id = resources.topic_id
-    WHERE resources.user_id = $1;
+    WHERE resources.user_id = $1
   `;
 
   // Show resources liked by user
-  const queryString2 = `
+  let queryString2 = `
     SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
     LEFT JOIN ratings ON ratings.resource_id = resources.id
     JOIN topics ON topics.id = resources.topic_id
-    WHERE ratings.islike = true AND ratings.user_id = $1;
+    WHERE ratings.islike = true AND ratings.user_id = $1
   `;
 
   //define values
   const values = [user_id];
+
+  // if topic id is truethy chain topic_id param to queries
+  if (topic_id){
+    values.push(topic_id);
+    queryString1 += ` AND resources.topic_id = $2;`;
+    queryString2 += ` AND resources.topic_id = $2;`;
+  }
 
   // Query the database for both queries concurrently
   const query1 = db.query(queryString1, values).then(data => data.rows);
@@ -88,6 +105,7 @@ const getResourcesByUserId = (user_id) => {
       console.log(err.message);
     });
 };
+
 
 // USER-STORY-01: POST Data to Database
 const postResourceByUserId = (title, url, description, options, user_id) => {
@@ -134,15 +152,15 @@ const addRatings= (rating) =>{
           [rating.resource_id])
           .then(rating =>{
             return {"data" : data.rows[0], "avg-rating" : rating.rows[0] };
-          }) 
+          })
           .catch((err) => {
             console.log(err.message);
-          });         
+          });
         })
         .catch((err) => {
           console.log(err.message);
         });
-        
+
       }else{ //INSERT new rating
         return db.query(`INSERT INTO ratings (user_id, resource_id, rate, isLike)
         VALUES ($1, $2, $3, $4) RETURNING *`,
@@ -150,7 +168,7 @@ const addRatings= (rating) =>{
           .then(data => {
             return db.query(`(SELECT round(avg(rate), 2) as average FROM ratings WHERE resource_id = $1) `,
           [rating.resource_id])
-          .then(rating =>{            
+          .then(rating =>{
             return {"data" : data.rows[0], "avg-rating" : rating };
           })
           .catch((err) => {
@@ -179,10 +197,10 @@ const addComments= (comment) =>{
     });
 };
 //USER STORY - 06
-const getUserRatingForResource = (user_id,resource_id)=>{  
+const getUserRatingForResource = (user_id,resource_id)=>{
   return db.query(`SELECT rate, isLike FROM ratings WHERE user_id=$1 AND resource_id =$2`,
     [user_id,resource_id])
-    .then(data => {      
+    .then(data => {
       return data.rows[0];
     })
     .catch((err) => {

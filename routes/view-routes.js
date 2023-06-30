@@ -10,8 +10,7 @@ const topicQueries = require('../db/queries/topics');
 
 // Landing Page
 router.get('/', (req, res) => {
-  console.log("req.params.topic",req.query.topic);
-  resourceQueries.getAllResources()
+  resourceQueries.getAllResources(req.query.topic)
     .then(resources => {
       userQueries.getUserWithId(req.session.user_id)
       .then((userData) => {
@@ -59,7 +58,7 @@ router.get('/my-resources', (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/login");
   }
-  resourceQueries.getResourcesByUserId(req.session.user_id)
+  resourceQueries.getResourcesByUserId(req.session.user_id, req.query.topic)
     .then(resources => {
       userQueries.getUserWithId(req.session.user_id)
       .then((userData) => {
