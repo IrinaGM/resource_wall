@@ -8,6 +8,7 @@ $color2: #E3F2FD; //Alice Blue
 $color3: #DB5461; //Indian Red
 $color4: #686963; //Dim Gray
 $color5: #8AA29E; //Cambridge Blue
+$color6: #ffebec; //Indian Red
 
 $font-stack: Helvetica, sans-serif;
 $body-bg-color: #FFF;
@@ -106,6 +107,16 @@ a:hover, a:active {
     background-color: $body-bg-color;
     border-radius: 15px;
   }
+
+  .warning-box {
+    display: none;
+    padding: 20px;
+    margin: 10px 0px 0px 0px;
+    background-color: $color6;
+    border-radius: $border-radius;
+    color: $color3;
+  }
+
 }
 
 /* Footer Container */
