@@ -4,4 +4,5 @@
     <% const url = originUrl === "/" ? "/" : "/my-resources" %>
     <a href="<%= url %>?topic=<%= topic.id %>" id="topicBtn<%= topic.id %>" class="nav-link topicBtn"><%= topic.name %></a>
   <% }); %>
+  <button id="resetFilter" class="resetFilter">Reset Filter</button>
 </nav>

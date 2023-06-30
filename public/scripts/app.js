@@ -203,13 +203,13 @@ $(() => {
   const createCommentElement = function (commentData) {
     let createdby = commentData["username"];
     let $comment = $(`  <div>
-        <header>    
-          <span>      
+        <header>
+          <span>
           <i class="fa-solid fa-user"></i>
-          <b>${createdby}</b>   
-          </span> 
+          <b>${createdby}</b>
+          </span>
         </header>
-        <p>${commentData["content"]}</p>               
+        <p>${commentData["content"]}</p>
         </div>`);
     return $comment;
   };
@@ -270,3 +270,10 @@ $(() => {
 function goBack() {
   history.back();
 }
+
+// Reload button click event
+$("#resetFilter").click(function() {
+  let url = location.href; // Get the current page URL
+  let newUrl = url.split('?')[0]; // Remove the query parameters
+  location.href = newUrl; // Navigate to the new URL
+});
