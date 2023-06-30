@@ -9,7 +9,7 @@
 
     <section id="section-container">
       <article>
-        <h1>Add Resource</h1>
+        <h2>Add Resource</h2>
         <form id="add-resource" method="POST" action="/api/resources/add" onsubmit="validateForm(event)">
           <h4>Enter your resource details:</h4>
           <fieldset>
@@ -23,15 +23,19 @@
             <input id="url" type="text" name="url" placeholder="Add URL https://" />
           </fieldset>
           <fieldset>
-            <label for="desc">Description:</label>
-            <textarea id="desc" type="text" name="description" placeholder="Add description..."></textarea>
+            <label for="description">Description:</label>
+            <div id="warning-description" class="warning-box"></div>
+            <textarea id="description" type="text" name="description" placeholder="Add description..."></textarea>
           </fieldset>
           <div>
             <h4>Select a topic:</h4>
             <div id="warning-topic" class="warning-box"></div>
-            <input type="radio" id="topic-01" name="options" value="1"><label for="topic-01">Javascript</label>
-            <input type="radio" id="topic-02" name="options" value="2"><label for="topic-02">HTML</label>
-            <input type="radio" id="topic-03" name="options" value="3"><label for="topic-03">CSS</label>
+            <input type="radio" id="topic-01" name="options" value="1"><label for="topic-01">JavaScript</label>
+            <input type="radio" id="topic-02" name="options" value="2"><label for="topic-02">Node.js</label>
+            <input type="radio" id="topic-03" name="options" value="3"><label for="topic-03">Ruby on Rails</label>
+            <input type="radio" id="topic-04" name="options" value="4"><label for="topic-04">HTML</label>
+            <input type="radio" id="topic-05" name="options" value="5"><label for="topic-05">CSS</label>
+            <input type="radio" id="topic-06" name="options" value="6"><label for="topic-06">React JS</label>
           </div>
           <div class="alignRight">
             <button type="button" onclick="goBack()">Cancel</button>

@@ -1,0 +1,106 @@
+/*
+ * Responsive Design Layout
+ */
+@media (max-width: 1100px) {
+  body {
+    padding: 25px 10px;
+  }
+
+  #top-menu-container {
+    flex-direction: column;
+    padding: 0px;
+
+    #nav-logo {
+      flex: none;
+      width: 320px;
+      height: 80px;
+      margin: 0px 0px 25px 0px;
+    }
+
+    #nav-main {
+      padding: 0px 5px;
+      margin: 30px;
+      width: 100%;
+    }
+
+    #nav-user {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      position: absolute;
+      padding: 80px 20px 0px 20px;
+      span {
+        margin: 12px 0px 0px 0px;
+        font-size: 1.1em;
+      }
+    }
+  }
+
+  #main-container {
+    flex-direction: column;
+
+    #side-menu-container {
+      flex-direction: row;
+      flex: 0px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      h4 {
+        width: 60px;
+        padding: 12px 0px;
+      }
+    }
+  }
+
+  #section-container {
+    #search-bar {
+      input {
+        width: auto;
+      }
+    }
+  }
+
+  #resource-container {
+
+    #closeBtn {
+      right: 20px;
+      top: 240px;
+    }
+
+    aside {
+      img {
+        height: 150px;
+        width: 150px;
+      }
+
+      > div {
+        flex-direction: column;
+      }
+
+      #rating {
+        width: inherit;
+      }
+
+      #like {
+        width: inherit;
+      }
+    }
+
+    article {
+      h1 {
+        font-size: 1.5em !important;
+      }
+
+      h2, h3 {
+        font-size: 1.2em !important;
+      }
+    }
+  }
+
+}
+
+@media (min-width: 2000px) {
+  body {
+    padding: 25px 400px;
+  }
+}
