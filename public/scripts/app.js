@@ -165,7 +165,46 @@ $(() => {
             likeButton.classList.remove("fa-solid");         
           }
         } 
-    }
+      }
+        //USER STORY 08 - Comments
+        //function to create comment HTML element for the given data
+        const createCommentElement = function (commentData) {
+          let createdby = commentData["username"];
+          let $comment = $(`  <article>
+        <header>    
+          <span>      
+          <i class="fa-solid fa-user"></i>
+          <h5>${createdby}</h5>   
+          </span> 
+        </header>
+        <p>${commentData["content"]}</p>
+        <hr/>         
+        </article>`);
+          return $comment;
+        };
+        //function to add newly created comment element to the container
+          const renderComments = function (comments) {
+            // loops through comments
+            // calls createCommentElement for each comment
+            // takes return value and appends it to the comments container
+            if (Array.isArray(comments)) {
+              comments.reverse();
+              $("#review-container").empty();
+              comments.forEach((element) => {
+                const $comment = createCommentElement(element);
+                $("#review-container").append($comment);
+              });
+            }
+          };
+          //function to fetch comments from server with ajax call and display them on UI
+         
+        const loadComments = function () {
+          let resource_id =  document.querySelector('#resource-id').value;           
+          $.ajax(`/api/resources/${resource_id}/comments`, { method: "GET" }).then(function (moreComments) {
+             renderComments(moreComments.comments);
+          });
+        };
+        loadComments();
   });
   
   // Navigate back to the previous page
