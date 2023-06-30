@@ -12,15 +12,19 @@
         <aside>
           <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
           <a class="nav-link" href="<%= item.url %>" target="_blank">Visit Site</a>
-          <div>
-            <div class="nav-link" id="rating">
-              <i class="fa-regular fa-star"></i>
-              <i class="fa-regular fa-star"></i>
-              <i class="fa-regular fa-star"></i>
-              <i class="fa-regular fa-star"></i>
-              <i class="fa-regular fa-star"></i>
+          <div>           
+            <div class="star-rating nav-link" id="rating">
+              <i class="my-star fa-regular fa-star star-1" data-star="1"></i>
+              <i class="my-star fa-regular fa-star star-2" data-star="2"></i>
+              <i class="my-star fa-regular fa-star star-3" data-star="3"></i>
+              <i class="my-star fa-regular fa-star star-4" data-star="4"></i>
+              <i class="my-star fa-regular fa-star star-5" data-star="5"></i>
             </div>
+            <form id="rating-form">
+            <input type="number" name="rate" readonly id="rating-output" value="<%= rating.rate%>"/>
+            <input type="number" readonly id="resource-id" value="<%= item.id%>"/>
             <button class="fa-regular fa-heart" id="like"></button>
+          </form>
           </div>
         </aside>
 
@@ -31,8 +35,8 @@
           </section>
 
           <section id="resource-stat">
-            <div>Rating: <% if (item.avg_rating === null) { %>No Rating<% } else { %><%= item.avg_rating %> / 5 <% }; %></div>
-            <div>Liked: <% if (item.total_like === null) { %>0<% } else { %><%= item.total_like %><% }; %></div>
+            <div id="avg_rating">Rating: <% if (item.avg_rating === null) { %>No Rating<% } else { %><%= item.avg_rating %> / 5 <% }; %></div>
+            <div >Liked: <% if (item.total_like === null) { %>0<% } else { %><%= item.total_like %><% }; %></div>
           </section>
 
           <section id="resource-desc">

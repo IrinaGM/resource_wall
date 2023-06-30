@@ -155,6 +155,28 @@ body {
         display: block;
       }
     }
-
+  }
+   /*set the default color of the stars*/
+   .star-rating{
+    color: #bebebe;
+  }
+  /*create the star*/
+  .my-star::before{
+    content:"\002605";
+  }
+  /*remove the default style (italic) of the star*/
+  .my-star{
+    font-style: unset !important;
+  }
+  /*set active star color*/
+  .is-active{
+    color:#fb8900;
+  }
+  /*set color on hover*/
+  .my-star:not(.is-active):hover{
+    color: #fbe600;
+  }
+  #rating-output,#resource-id{
+    display: none;
   }
 }
