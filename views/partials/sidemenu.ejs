@@ -1,6 +1,6 @@
 <nav id="side-menu-container">
   <h4>Topics</h4>
   <% topics.forEach(function(topic) { %>
-    <a href="/resources?topicId=<%= topic.id %>" class="nav-link"><%= topic.name %></a>
+    <a href="/resources?topic=<%= topic.id %>" class="nav-link"><%= topic.name %></a>
   <% }); %>
 </nav>
