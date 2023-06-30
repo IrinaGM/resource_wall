@@ -67,13 +67,18 @@ router.post("/:id/edit", (req, res) => {
 //api to add a new rating
 
 router.post("/:id/ratings", (req, res) => {
-  const userId = req.session.user_id;
+  const userId = req.session.user_id; 
   if (!userId) {
     return res.send({ error: "Please log in!" });
   }
-  const rating = req.body;
-  rating.user_id = userId;
+  const rating = {};
+  rating.rate= req.body.rate;  
+  rating.user_id = userId;  
   rating.resource_id = req.params.id;
+  if(!req.body.isLike)
+    rating.isLike=false;
+  else
+    rating.isLike=req.body.isLike;
   resourceQueries
     .addRatings(rating)
     .then((data) => {
