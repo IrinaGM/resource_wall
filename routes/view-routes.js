@@ -36,12 +36,13 @@ router.get('/resource', (req, res) => {
         if(!ratings){
           ratings= {};
           ratings.rate=0;
-          ratings.isLike=false;
+          ratings.islike=0;
         }
         userQueries.getUserWithId(req.session.user_id)
         .then((userData) => {
           const item = resources[0];
           const rating = ratings;
+          rating.isLike = ratings.islike==true?1:0;
           res.render("resource", { item, user: userData, rating });
         })
       })

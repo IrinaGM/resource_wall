@@ -148,10 +148,10 @@ const addRatings= (rating) =>{
          RETURNING *`,
         [rating.rate, rating.isLike, rating.user_id, rating.resource_id])
         .then(data => {
-          return db.query(`(SELECT round(avg(rate), 2) as average FROM ratings WHERE resource_id = $1) `,
+          return db.query(`(SELECT round(avg(rate), 2) as average,sum(CASE WHEN ratings.islike THEN 1 ELSE 0 END) as totalLikes  FROM ratings WHERE resource_id = $1) `,
           [rating.resource_id])
           .then(rating =>{
-            return {"data" : data.rows[0], "avg-rating" : rating.rows[0] };
+            return {"data" : data.rows[0], "avg-rating" : rating.rows[0].average, "totalLikes":rating.rows[0].totallikes };
           })
           .catch((err) => {
             console.log(err.message);
