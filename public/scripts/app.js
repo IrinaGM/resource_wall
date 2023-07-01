@@ -5,9 +5,18 @@ $(() => {
     if (Array.isArray(resources)) {
       $("#search-container").empty();
       resources.forEach((item) => {
+
+        const imgTopicsSrc = {
+          '1':'./images/200x200-JS.png',
+          '2':'./images/200x200-NODE.png',
+          '3':'./images/200x200-RUBY.png',
+          '4':"./images/200x200-HTML.png",
+          '5':"./images/200x200-CSS.png",
+          '6':"./images/200x200-REACT.png"
+        };
         $res = $(`<a class="itemLink" href="/resource?id=${item.id}">
         <item>
-          <img alt="${item.title}" src="./images/200x200-JS.png"/>
+          <img alt="${item.title}" src="${imgTopicsSrc[item.topic_id]}"/>
           <span class="topic">${item.topic_name}</span>
           <span class="title">${item.title}</span>
         </item>
