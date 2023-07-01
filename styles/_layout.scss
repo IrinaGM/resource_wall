@@ -100,7 +100,7 @@ body {
 
     #rating {
       width: 190px;
-      font-size: 1.3em;
+      font-size: 1.5em;
       text-align: center;
     }
 
@@ -156,9 +156,10 @@ body {
       }
     }
   }
+
    /*set the default color of the stars*/
    .star-rating{
-    color: #bebebe;
+    color: #ccc;
   }
   /*create the star*/
   .my-star::before{
@@ -170,23 +171,22 @@ body {
   }
   /*set active star color*/
   .is-active{
-    color:#fb8900;
+    color:#DB5461;
   }
   /*set color on hover*/
   .my-star:not(.is-active):hover{
-    color: #fbe600;
+    color: #fbb800;
   }
-  #rating-output,#resource-id,#is-like{
+  #rating-output, #resource-id, #is-like{
     display: none;
   }
   .fa-solid.fa-heart{
-    color:red;
+    color:#DB5461;
   }
   .fa-regular.fa-heart{
-    color:red;
+    color:#DB5461;
   }
   .fa-heart{
     padding: 15px;
-    height: 20px;
   }
 }
