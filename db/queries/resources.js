@@ -69,9 +69,9 @@ const getResourcebyId = (id) => {
 const getResourcesByUserId = (user_id, topic_id) => {
   // Show resources added by user
   let queryString1 = `
-    SELECT DISTINCT resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
+    SELECT DISTINCT resources.user_id, resources.title, resources.topic_id, ratings.islike, resources.id, topics.name as topic_name
     FROM resources
-    LEFT JOIN ratings ON ratings.resource_id = resources.id
+    LEFT JOIN ratings ON ratings.resource_id = resources.id AND ratings.islike = false
     JOIN topics ON topics.id = resources.topic_id
     WHERE resources.user_id = $1
   `;
