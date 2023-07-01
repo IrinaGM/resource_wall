@@ -26,6 +26,9 @@ const getAllResources = (topic_id) => {
     queryString += ` AND resources.topic_id = $1`
   }
 
+   // Sort the listing oldest to newest
+   queryString += ` ORDER BY resources.id;`;
+
   // query the db
   return db.query(queryString, values)
     .then(data => {
@@ -88,9 +91,13 @@ const getResourcesByUserId = (user_id, topic_id) => {
   // if topic id is truethy chain topic_id param to queries
   if (topic_id){
     values.push(topic_id);
-    queryString1 += ` AND resources.topic_id = $2;`;
-    queryString2 += ` AND resources.topic_id = $2;`;
+    queryString1 += ` AND resources.topic_id = $2`;
+    queryString2 += ` AND resources.topic_id = $2`;
   }
+
+  // Sort the listing oldest to newest
+  queryString1 += ` ORDER BY resources.id;`;
+  queryString2 += ` ORDER BY resources.id;`;
 
   // Query the database for both queries concurrently
   const query1 = db.query(queryString1, values).then(data => data.rows);
@@ -208,10 +215,10 @@ const getUserRatingForResource = (user_id,resource_id)=>{
     });
 };
 //USER STORY 8
-const getCommentsForResource = (resource_id)=>{  
+const getCommentsForResource = (resource_id)=>{
   return db.query(`SELECT c.*, u.name AS username FROM comments c LEFT JOIN users u ON c.user_id= u.id  WHERE resource_id =$1 `,
     [resource_id])
-    .then(data => {      
+    .then(data => {
       return data.rows;
     })
     .catch((err) => {
