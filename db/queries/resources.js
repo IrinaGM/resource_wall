@@ -45,7 +45,7 @@ const getResourcebyId = (id) => {
   const queryString = `
   SELECT
     resources.url, resources.title, resources.description,
-    resources.user_id, topics.name as topic_name, resources.id,
+    resources.user_id, topics.name as topic_name, resources.topic_id, resources.id,
     (SELECT round(avg(rate), 2) FROM ratings WHERE resource_id = $1) as avg_rating,
     (SELECT sum(CASE WHEN ratings.islike THEN 1 ELSE 0 END) FROM ratings WHERE resource_id = $1) as total_like
   FROM resources

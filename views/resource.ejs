@@ -10,7 +10,9 @@
       <item id="resource-container">
         <button class="fa-solid fa-xmark" id="closeBtn" onclick="goBack()"></button>
         <aside>
-          <img alt="<%= item.title %>" src="./images/200x200-JS.png"/>
+          <!-- Define object for topic images src -->
+          <% const imgTopicsSrc = {'1':'./images/200x200-JS.png', '2':'./images/200x200-NODE.png', '3':'./images/200x200-RUBY.png', '4':"./images/200x200-HTML.png", '5':"./images/200x200-CSS.png",'6':"./images/200x200-REACT.png" } %>
+          <img alt="<%= item.title %>" src="<%= imgTopicsSrc[item.topic_id] %>"/>
           <a class="nav-link" href="<%= item.url %>" target="_blank">Visit Site</a>
           <% if (user !== null) { %>
           <div>
@@ -49,8 +51,8 @@
 
           <section id="resource-reviews">
             <h3>Reviews</h3>
-            <div id="review-container"> 
-                           
+            <div id="review-container">
+
             </div>
           </section>
           <% if (user !== null) { %>
