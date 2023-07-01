@@ -229,12 +229,21 @@ $(() => {
   //function to fetch comments from server with ajax call and display them on UI
 
   const loadComments = function () {
+    if(document.querySelector("#resource-id")){
     let resource_id = document.querySelector("#resource-id").value;
     $.ajax(`/api/resources/${resource_id}/comments`, { method: "GET" }).then(
       function (moreComments) {
         renderComments(moreComments.comments);
       }
     );
+    }else{
+      let comments =[];
+      let comment1 ={'content':"Fantastic Read!", 'username':"Judy Brown"};
+      let comment2 ={'content':"very good book!", 'username':"James Potter"}
+      comments.push(comment1);
+      comments.push(comment2);
+      renderComments(comments);
+    }
   };
   //Handling submit event of the form with ajax calls to dynamically update the page
   let commentsForm = $("#comments-form");
