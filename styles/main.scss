@@ -15,7 +15,7 @@ $font-stack: Helvetica, sans-serif;
 $body-bg-color: #FFF;
 $container-bg-color: #FFF;
 $border-size: 2px;
-$border-color: #E3F2FD;
+$border-color: #afc6d5;
 $border-color2: #8AA29E;
 $border-radius: 10px;
 $link-color: #DB5461;
@@ -71,8 +71,23 @@ a:hover, a:active {
   color: $body-bg-color;
 }
 
+/* Add Link with Style Button */
+.nav-link-hollow {
+  padding: 10px 15px;
+  margin: 2px;
+  border: $border-size solid $color1;
+  border-radius: $border-radius;
+  background-color: $container-bg-color;
+  text-decoration: none;
+  color: $link-color;
+}
+
+.nav-link-hollow:hover {
+  background-color: $color1;
+}
+
 .topicBtn.selected{
-  background-color: #db5461;
+  background-color: $link-color;
   color: $body-bg-color;
 }
 
